@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Menu, X, Shield } from "lucide-react";
+import { Shield } from "lucide-react";
 import { Button } from "./ui/button";
 import { useAuth } from "@/hooks/useAuth";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { user, isAdmin } = useAuth();
+  const { isAdmin } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,7 +23,6 @@ const Navbar = () => {
     { href: "#skills", label: "Skills" },
     { href: "#experience", label: "Experience" },
     { href: "#projects", label: "Projects" },
-    { href: "#education", label: "Education" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -35,23 +34,23 @@ const Navbar = () => {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? "bg-background/95 backdrop-blur-sm border-b border-foreground/10" 
+          ? "bg-background/95 backdrop-blur-sm border-b border-border" 
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-16">
+      <div className="container mx-auto px-6 lg:px-12">
+        <div className="flex items-center justify-between h-16 lg:h-20">
           <a 
             href="#" 
-            className="font-mono-alt text-sm text-foreground hover:text-muted-foreground transition-colors"
+            className="font-display text-2xl text-foreground hover:text-pink transition-colors"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            ©AS
+            AS.
           </a>
           
           {/* Desktop Navigation */}
@@ -60,7 +59,7 @@ const Navbar = () => {
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider link-hover"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors link-underline"
               >
                 {link.label}
               </button>
@@ -70,7 +69,7 @@ const Navbar = () => {
                 variant="outline"
                 size="sm"
                 onClick={() => navigate('/admin')}
-                className="border-foreground/20 text-foreground hover:bg-foreground hover:text-background rounded-none text-xs"
+                className="border-pink text-pink hover:bg-pink hover:text-white rounded-none text-xs"
               >
                 <Shield className="w-3 h-3 mr-1" />
                 Admin
@@ -80,22 +79,22 @@ const Navbar = () => {
           
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground hover:text-muted-foreground transition-colors font-mono-alt text-xs"
+            className="md:hidden text-foreground hover:text-pink transition-colors text-sm font-medium"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? "Close [x]" : "Menu [+]"}
+            {isMobileMenuOpen ? "Close" : "Menu"}
           </button>
         </div>
         
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-8 border-t border-foreground/10 animate-fade-in">
+          <div className="md:hidden py-8 border-t border-border animate-fade-in bg-background">
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left uppercase tracking-wider"
+                  className="text-lg text-muted-foreground hover:text-foreground transition-colors text-left"
                 >
                   {link.label}
                 </button>
@@ -108,7 +107,7 @@ const Navbar = () => {
                     navigate('/admin');
                     setIsMobileMenuOpen(false);
                   }}
-                  className="border-foreground/20 text-foreground hover:bg-foreground hover:text-background rounded-none w-fit text-xs"
+                  className="border-pink text-pink hover:bg-pink hover:text-white rounded-none w-fit text-xs"
                 >
                   <Shield className="w-3 h-3 mr-1" />
                   Admin

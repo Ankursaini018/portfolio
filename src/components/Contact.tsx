@@ -140,35 +140,31 @@ const Contact = () => {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="py-32 relative bg-noise">
-      {/* Chapter indicator */}
-      <div className="absolute top-8 left-6">
-        <p className="font-mono-alt text-xs text-muted-foreground scroll-animate">chapter 6:</p>
-        <p className="font-mono-alt text-xs text-foreground scroll-animate">contact</p>
-      </div>
-
-      <div className="container mx-auto px-6">
-        <div className="mb-20">
-          <p className="section-subtitle mb-4 scroll-animate">Get In Touch</p>
-          <h2 className="section-title scroll-animate">Contact Me</h2>
-          <p className="text-muted-foreground mt-6 max-w-lg scroll-animate">
+    <section ref={sectionRef} id="contact" className="py-24 lg:py-32 bg-dark text-dark-fg">
+      <div className="container mx-auto px-6 lg:px-12">
+        <div className="mb-16 lg:mb-20">
+          <p className="text-sm text-dark-fg/60 mb-4 scroll-animate">Get In Touch</p>
+          <h2 className="font-display text-display-lg text-dark-fg scroll-animate">
+            LET'S CONNECT
+          </h2>
+          <p className="text-dark-fg/60 mt-6 max-w-lg scroll-animate">
             Have a project in mind or want to collaborate? Drop me a message!
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-px bg-foreground/10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Contact Form */}
-          <div className="scroll-animate bg-background p-8 lg:p-12">
-            <h3 className="text-sm font-medium text-foreground uppercase tracking-wider mb-8 flex items-center gap-2">
-              <Send className="w-4 h-4" />
+          <div className="scroll-animate">
+            <h3 className="text-sm font-medium text-dark-fg uppercase tracking-wider mb-8 flex items-center gap-2">
+              <Send className="w-4 h-4 text-pink" />
               Send a Message
             </h3>
 
             {isSubmitted ? (
-              <div className="flex flex-col items-center justify-center py-12 text-center">
-                <CheckCircle className="w-8 h-8 text-foreground mb-4" />
-                <h4 className="text-lg font-medium text-foreground mb-2">Message Sent!</h4>
-                <p className="text-sm text-muted-foreground">Thank you for reaching out. I'll respond as soon as possible.</p>
+              <div className="flex flex-col items-center justify-center py-12 text-center border border-dark-fg/20 p-8">
+                <CheckCircle className="w-8 h-8 text-pink mb-4" />
+                <h4 className="text-lg font-medium text-dark-fg mb-2">Message Sent!</h4>
+                <p className="text-sm text-dark-fg/60">Thank you for reaching out. I'll respond as soon as possible.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -178,7 +174,7 @@ const Contact = () => {
                     placeholder="Your Name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className={`bg-transparent border-0 border-b border-foreground/20 rounded-none px-0 focus:border-foreground focus-visible:ring-0 ${errors.name ? "border-destructive" : ""}`}
+                    className={`bg-transparent border-0 border-b border-dark-fg/20 rounded-none px-0 focus:border-pink focus-visible:ring-0 text-dark-fg placeholder:text-dark-fg/40 ${errors.name ? "border-destructive" : ""}`}
                     disabled={isSubmitting}
                   />
                   {errors.name && <p className="text-destructive text-xs mt-2">{errors.name}</p>}
@@ -191,7 +187,7 @@ const Contact = () => {
                     placeholder="Your Email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className={`bg-transparent border-0 border-b border-foreground/20 rounded-none px-0 focus:border-foreground focus-visible:ring-0 ${errors.email ? "border-destructive" : ""}`}
+                    className={`bg-transparent border-0 border-b border-dark-fg/20 rounded-none px-0 focus:border-pink focus-visible:ring-0 text-dark-fg placeholder:text-dark-fg/40 ${errors.email ? "border-destructive" : ""}`}
                     disabled={isSubmitting}
                   />
                   {errors.email && <p className="text-destructive text-xs mt-2">{errors.email}</p>}
@@ -203,7 +199,7 @@ const Contact = () => {
                     placeholder="Subject (Optional)"
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="bg-transparent border-0 border-b border-foreground/20 rounded-none px-0 focus:border-foreground focus-visible:ring-0"
+                    className="bg-transparent border-0 border-b border-dark-fg/20 rounded-none px-0 focus:border-pink focus-visible:ring-0 text-dark-fg placeholder:text-dark-fg/40"
                     disabled={isSubmitting}
                   />
                 </div>
@@ -214,7 +210,7 @@ const Contact = () => {
                     placeholder="Your Message"
                     value={formData.message}
                     onChange={handleInputChange}
-                    className={`bg-transparent border-0 border-b border-foreground/20 rounded-none px-0 focus:border-foreground focus-visible:ring-0 min-h-[120px] resize-none ${errors.message ? "border-destructive" : ""}`}
+                    className={`bg-transparent border-0 border-b border-dark-fg/20 rounded-none px-0 focus:border-pink focus-visible:ring-0 min-h-[120px] resize-none text-dark-fg placeholder:text-dark-fg/40 ${errors.message ? "border-destructive" : ""}`}
                     disabled={isSubmitting}
                   />
                   {errors.message && <p className="text-destructive text-xs mt-2">{errors.message}</p>}
@@ -222,7 +218,7 @@ const Contact = () => {
 
                 <Button
                   type="submit"
-                  className="w-full bg-foreground text-background hover:bg-foreground/90 rounded-none font-medium"
+                  className="w-full bg-pink text-white hover:bg-pink/90 rounded-none font-medium"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -242,9 +238,9 @@ const Contact = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="bg-background p-8 lg:p-12 space-y-8">
+          <div className="space-y-8">
             <div className="scroll-animate">
-              <h3 className="text-sm font-medium text-foreground uppercase tracking-wider mb-8">Contact Info</h3>
+              <h3 className="text-sm font-medium text-dark-fg uppercase tracking-wider mb-8">Contact Info</h3>
               <div className="space-y-6">
                 {contactInfo.map((info) => (
                   <a
@@ -252,18 +248,18 @@ const Contact = () => {
                     href={info.href || undefined}
                     className={`flex items-start gap-4 group ${info.href ? "cursor-pointer" : "cursor-default"}`}
                   >
-                    <info.icon className="w-4 h-4 text-muted-foreground mt-1" />
+                    <info.icon className="w-5 h-5 text-pink mt-1" />
                     <div>
-                      <p className="font-mono-alt text-xs text-muted-foreground uppercase tracking-wider">{info.label}</p>
-                      <p className="text-sm text-foreground group-hover:text-muted-foreground transition-colors">{info.value}</p>
+                      <p className="text-xs text-dark-fg/60 uppercase tracking-wider">{info.label}</p>
+                      <p className="text-dark-fg group-hover:text-pink transition-colors">{info.value}</p>
                     </div>
                   </a>
                 ))}
               </div>
             </div>
 
-            <div className="scroll-animate pt-8 border-t border-foreground/10">
-              <h3 className="text-sm font-medium text-foreground uppercase tracking-wider mb-6">Connect</h3>
+            <div className="scroll-animate pt-8 border-t border-dark-fg/20">
+              <h3 className="text-sm font-medium text-dark-fg uppercase tracking-wider mb-6">Connect</h3>
               <div className="flex gap-6">
                 {socials.map((social) => (
                   <a
@@ -271,9 +267,9 @@ const Contact = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors link-hover"
+                    className="flex items-center gap-2 text-dark-fg/60 hover:text-pink transition-colors link-underline"
                   >
-                    <social.icon className="w-4 h-4" />
+                    <social.icon className="w-5 h-5" />
                     <span>{social.label}</span>
                   </a>
                 ))}
