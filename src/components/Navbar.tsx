@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Menu, X, Shield } from "lucide-react";
 import { Button } from "./ui/button";
+import { useAuth } from "@/hooks/useAuth";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { user, isAdmin } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,6 +65,17 @@ const Navbar = () => {
                 {link.label}
               </button>
             ))}
+            {isAdmin && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => navigate('/admin')}
+                className="border-primary/30 text-primary hover:bg-primary/10"
+              >
+                <Shield className="w-4 h-4 mr-1" />
+                Admin
+              </Button>
+            )}
           </div>
           
           {/* Mobile Menu Button */}
@@ -87,6 +102,20 @@ const Navbar = () => {
                   {link.label}
                 </button>
               ))}
+              {isAdmin && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    navigate('/admin');
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="border-primary/30 text-primary hover:bg-primary/10 w-fit"
+                >
+                  <Shield className="w-4 h-4 mr-1" />
+                  Admin
+                </Button>
+              )}
             </div>
           </div>
         )}
