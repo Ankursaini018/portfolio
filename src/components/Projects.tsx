@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef } from "react";
+import Marquee from "./Marquee";
 
 const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -63,35 +64,42 @@ const Projects = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="projects" className="py-24 lg:py-32 bg-background">
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="flex items-end justify-between mb-16 lg:mb-20">
+    <section ref={sectionRef} id="projects" className="py-24 lg:py-32 bg-secondary relative overflow-hidden">
+      {/* Background Marquee */}
+      <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full pointer-events-none opacity-30">
+        <Marquee text="PROJECTS" speed="slow" direction="right" />
+      </div>
+
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+        <div className="flex items-end justify-between mb-16 lg:mb-24">
           <div>
-            <p className="text-sm text-muted-foreground mb-4 scroll-animate">Recent works</p>
-            <h2 className="font-display text-display-lg text-foreground scroll-animate">
+            <p className="text-sm text-muted-foreground mb-4 scroll-animate uppercase tracking-[0.3em]">
+              04 — Works
+            </p>
+            <h2 className="font-display text-display-xl text-foreground scroll-animate">
               PROJECTS
             </h2>
           </div>
-          <p className="text-sm text-muted-foreground scroll-animate">2025</p>
+          <p className="text-sm text-muted-foreground scroll-animate uppercase tracking-widest">2025</p>
         </div>
         
-        <div className="space-y-8">
+        <div className="space-y-6">
           {projects.map((project, index) => (
             <div 
               key={project.title}
-              className="scroll-animate group border border-border hover:border-pink transition-all duration-300 hover-lift"
+              className="scroll-animate group border border-border bg-card hover:border-red transition-all duration-500 hover-lift"
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <div className="grid lg:grid-cols-12 gap-6 p-8">
+              <div className="grid lg:grid-cols-12 gap-6 p-8 lg:p-10">
                 {/* Number & Year */}
                 <div className="lg:col-span-2 flex lg:flex-col gap-4 lg:gap-2">
-                  <span className="text-pink font-medium">{project.number}</span>
+                  <span className="text-red font-medium text-lg">{project.number}</span>
                   <span className="text-muted-foreground text-sm">{project.year}</span>
                 </div>
 
                 {/* Title */}
                 <div className="lg:col-span-4">
-                  <h3 className="font-display text-3xl lg:text-4xl text-foreground group-hover:text-pink transition-colors">
+                  <h3 className="font-display text-3xl lg:text-4xl text-foreground group-hover:text-red transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-sm text-muted-foreground mt-2">{project.subtitle}</p>
@@ -99,14 +107,14 @@ const Projects = () => {
 
                 {/* Description */}
                 <div className="lg:col-span-5">
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed text-base">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-2 mt-4">
+                  <div className="flex flex-wrap gap-2 mt-6">
                     {project.tags.map((tag) => (
                       <span 
                         key={tag}
-                        className="text-xs text-muted-foreground border border-border px-3 py-1"
+                        className="text-xs text-muted-foreground border border-border px-3 py-1.5 hover:border-red hover:text-red transition-colors"
                       >
                         {tag}
                       </span>
@@ -116,7 +124,9 @@ const Projects = () => {
 
                 {/* Arrow */}
                 <div className="lg:col-span-1 flex items-center justify-end">
-                  <ArrowUpRight className="w-6 h-6 text-muted-foreground group-hover:text-pink transition-colors" />
+                  <div className="w-12 h-12 border border-border rounded-full flex items-center justify-center group-hover:border-red group-hover:bg-red transition-all duration-300">
+                    <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+                  </div>
                 </div>
               </div>
             </div>
