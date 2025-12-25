@@ -35,9 +35,9 @@ const Navbar = () => {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? "bg-background/80 backdrop-blur-lg border-b border-border" 
+          ? "glass border-b border-border/50" 
           : "bg-transparent"
       }`}
     >
@@ -45,7 +45,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <a 
             href="#" 
-            className="font-mono font-bold text-xl text-gradient"
+            className="font-mono font-bold text-2xl text-gradient hover:opacity-80 transition-opacity"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
@@ -56,11 +56,12 @@ const Navbar = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+            {navLinks.map((link, index) => (
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="text-muted-foreground hover:text-primary transition-colors font-medium text-sm"
+                className="text-muted-foreground hover:text-foreground transition-colors font-medium text-sm link-underline"
+                style={{ animationDelay: `${index * 50}ms` }}
               >
                 {link.label}
               </button>
@@ -82,7 +83,7 @@ const Navbar = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden text-foreground"
+            className="md:hidden text-foreground hover:bg-secondary/50"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -91,13 +92,13 @@ const Navbar = () => {
         
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border animate-fade-in">
+          <div className="md:hidden py-6 border-t border-border/50 animate-fade-in">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-muted-foreground hover:text-primary transition-colors font-medium text-left py-2"
+                  className="text-muted-foreground hover:text-foreground transition-colors font-medium text-left py-2 hover:pl-2 duration-300"
                 >
                   {link.label}
                 </button>
