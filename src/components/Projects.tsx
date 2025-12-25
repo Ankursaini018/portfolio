@@ -72,7 +72,7 @@ const Projects = () => {
               PROJECTS
             </h2>
           </div>
-          <p className="text-sm text-muted-foreground scroll-animate">2024</p>
+          <p className="text-sm text-muted-foreground scroll-animate">2025</p>
         </div>
         
         <div className="space-y-8">
