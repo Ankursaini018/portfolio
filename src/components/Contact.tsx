@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Mail, Phone, MapPin, Github, Linkedin, Send, Loader2, CheckCircle } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Mail, Phone, MapPin, Github, Linkedin, Send, Loader2, CheckCircle, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -16,6 +16,7 @@ const contactSchema = z.object({
 
 const Contact = () => {
   const { toast } = useToast();
+  const sectionRef = useRef<HTMLElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -25,6 +26,29 @@ const Contact = () => {
     message: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.scroll-animate').forEach((el, index) => {
+              setTimeout(() => {
+                el.classList.add('in-view');
+              }, index * 100);
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const contactInfo = [
     {
@@ -72,7 +96,6 @@ const Contact = () => {
     e.preventDefault();
     setErrors({});
 
-    // Validate form data
     const result = contactSchema.safeParse(formData);
     if (!result.success) {
       const fieldErrors: Record<string, string> = {};
@@ -103,10 +126,7 @@ const Contact = () => {
         description: "Thank you for reaching out. I'll get back to you soon!",
       });
 
-      // Reset form
       setFormData({ name: "", email: "", subject: "", message: "" });
-      
-      // Reset success state after 5 seconds
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch (error) {
       toast({
@@ -120,21 +140,23 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-secondary/30 relative">
-      <div className="absolute inset-0 grid-pattern opacity-30" />
+    <section ref={sectionRef} id="contact" className="py-32 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 bg-gradient-subtle" />
+      <div className="absolute top-1/2 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <p className="text-primary font-mono text-sm mb-2">{"// Get In Touch"}</p>
-          <h2 className="section-title">Contact Me</h2>
-          <p className="section-subtitle mx-auto mt-4">
+        <div className="text-center mb-20">
+          <p className="text-primary font-mono text-sm mb-4 tracking-widest uppercase scroll-animate">Get In Touch</p>
+          <h2 className="section-title scroll-animate">Contact Me</h2>
+          <p className="section-subtitle mx-auto mt-4 scroll-animate">
             Have a project in mind or want to collaborate? Drop me a message!
           </p>
         </div>
 
         <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="bg-card border border-border rounded-xl p-8 card-hover">
+          <div className="scroll-animate glass rounded-xl p-8 card-hover">
             <h3 className="font-mono font-bold text-xl text-foreground mb-6 flex items-center gap-2">
               <Send className="w-5 h-5 text-primary" />
               Send a Message
@@ -156,7 +178,7 @@ const Contact = () => {
                     placeholder="Your Name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className={`bg-muted border-border focus:border-primary ${errors.name ? "border-destructive" : ""}`}
+                    className={`bg-secondary/50 border-border/50 focus:border-primary focus:bg-secondary transition-all ${errors.name ? "border-destructive" : ""}`}
                     disabled={isSubmitting}
                   />
                   {errors.name && <p className="text-destructive text-sm mt-1">{errors.name}</p>}
@@ -169,7 +191,7 @@ const Contact = () => {
                     placeholder="Your Email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className={`bg-muted border-border focus:border-primary ${errors.email ? "border-destructive" : ""}`}
+                    className={`bg-secondary/50 border-border/50 focus:border-primary focus:bg-secondary transition-all ${errors.email ? "border-destructive" : ""}`}
                     disabled={isSubmitting}
                   />
                   {errors.email && <p className="text-destructive text-sm mt-1">{errors.email}</p>}
@@ -181,7 +203,7 @@ const Contact = () => {
                     placeholder="Subject (Optional)"
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="bg-muted border-border focus:border-primary"
+                    className="bg-secondary/50 border-border/50 focus:border-primary focus:bg-secondary transition-all"
                     disabled={isSubmitting}
                   />
                 </div>
@@ -192,7 +214,7 @@ const Contact = () => {
                     placeholder="Your Message"
                     value={formData.message}
                     onChange={handleInputChange}
-                    className={`bg-muted border-border focus:border-primary min-h-[150px] resize-none ${errors.message ? "border-destructive" : ""}`}
+                    className={`bg-secondary/50 border-border/50 focus:border-primary focus:bg-secondary transition-all min-h-[150px] resize-none ${errors.message ? "border-destructive" : ""}`}
                     disabled={isSubmitting}
                   />
                   {errors.message && <p className="text-destructive text-sm mt-1">{errors.message}</p>}
@@ -200,7 +222,7 @@ const Contact = () => {
 
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-primary text-primary-foreground font-mono glow-primary hover:opacity-90 transition-opacity"
+                  className="w-full bg-gradient-primary text-primary-foreground font-medium glow-primary hover:opacity-90 transition-all group"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -210,8 +232,8 @@ const Contact = () => {
                     </>
                   ) : (
                     <>
-                      <Send className="w-4 h-4 mr-2" />
                       Send Message
+                      <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                     </>
                   )}
                 </Button>
@@ -221,16 +243,16 @@ const Contact = () => {
 
           {/* Contact Info */}
           <div className="space-y-6">
-            <div className="bg-card border border-border rounded-xl p-8 card-hover">
+            <div className="scroll-animate glass rounded-xl p-8 card-hover">
               <h3 className="font-mono font-bold text-xl text-foreground mb-6">Contact Info</h3>
               <div className="space-y-4">
                 {contactInfo.map((info) => (
                   <a
                     key={info.label}
                     href={info.href || undefined}
-                    className={`flex items-center gap-4 p-3 rounded-lg hover:bg-muted transition-colors ${info.href ? "cursor-pointer" : "cursor-default"}`}
+                    className={`flex items-center gap-4 p-4 rounded-lg hover:bg-secondary/50 transition-all duration-300 group ${info.href ? "cursor-pointer" : "cursor-default"}`}
                   >
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                       <info.icon className="w-5 h-5 text-primary" />
                     </div>
                     <div>
@@ -242,7 +264,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="bg-card border border-border rounded-xl p-8 card-hover">
+            <div className="scroll-animate glass rounded-xl p-8 card-hover">
               <h3 className="font-mono font-bold text-xl text-foreground mb-6">Connect With Me</h3>
               <div className="flex gap-4">
                 {socials.map((social) => (
@@ -251,7 +273,7 @@ const Contact = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 p-4 rounded-xl bg-muted border border-border hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 group"
+                    className="flex-1 flex items-center justify-center gap-2 p-4 rounded-xl bg-secondary/50 border border-border/50 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 group"
                   >
                     <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                     <span className="font-medium text-muted-foreground group-hover:text-primary transition-colors">
