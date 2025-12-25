@@ -1,121 +1,112 @@
-import { Github, Linkedin, Mail, MapPin, ChevronDown } from "lucide-react";
-import { Button } from "./ui/button";
+import { Github, Linkedin, Mail } from "lucide-react";
+import profilePicture from "@/assets/profile-picture.jpg";
 
 const Hero = () => {
-  const scrollToAbout = () => {
-    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+  const navItems = [
+    { label: "Home", href: "#" },
+    { label: "About", href: "#about" },
+    { label: "Projects", href: "#projects" },
+    { label: "Skills", href: "#skills" },
+    { label: "Contact", href: "#contact" },
+  ];
+
+  const handleNavClick = (href: string) => {
+    if (href === "#") return;
+    const element = document.querySelector(href);
+    element?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-center relative overflow-hidden bg-noise">
-      {/* Large Background Text */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-        <h1 className="text-stroke text-massive font-light tracking-tighter whitespace-nowrap animate-fade-in">
-          Ankur Saini
-        </h1>
-      </div>
-
-      {/* Top Left Corner */}
-      <div className="absolute top-6 left-6 z-20">
-        <p className="font-mono-alt text-xs text-muted-foreground animate-slide-up">
-          [status: <span className="text-foreground">active</span>]
-        </p>
-      </div>
-
-      {/* Top Right Corner */}
-      <div className="absolute top-6 right-6 z-20">
-        <p className="font-mono-alt text-xs text-muted-foreground animate-slide-up animation-delay-100">
-          MENU [+]
-        </p>
-      </div>
-
-      {/* Bottom Left - Coordinates */}
-      <div className="absolute bottom-6 left-6 z-20">
-        <div className="font-mono-alt text-xs text-muted-foreground space-y-1 animate-slide-up animation-delay-300">
-          <p>[X].0px</p>
-          <p>[Y].0px</p>
+    <section className="split-section">
+      {/* Left Side - Dark with Image */}
+      <div className="split-dark min-h-[60vh] lg:min-h-screen flex flex-col">
+        {/* Profile Image */}
+        <div className="flex-1 relative overflow-hidden">
+          <img
+            src={profilePicture}
+            alt="Ankur Saini"
+            className="w-full h-full object-cover object-center animate-scale-in"
+          />
+          
+          {/* Overlay gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         </div>
-        <div className="mt-4 animate-slide-up animation-delay-400">
-          <p className="text-xs text-muted-foreground uppercase tracking-widest mb-2">Portfolio</p>
-          <div className="flex gap-2">
-            <div className="w-8 h-px bg-foreground" />
-            <div className="w-4 h-px bg-foreground/30" />
-            <div className="w-2 h-px bg-foreground/20" />
-          </div>
-        </div>
+
+        {/* Navigation - Bottom of dark section */}
+        <nav className="p-8 lg:p-12">
+          <ul className="flex flex-col gap-2">
+            {navItems.map((item, index) => (
+              <li key={item.label}>
+                <button
+                  onClick={() => handleNavClick(item.href)}
+                  className="nav-link text-xl lg:text-2xl font-medium animate-slide-in-left"
+                  style={{ animationDelay: `${0.3 + index * 0.1}s` }}
+                >
+                  {item.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
 
-      {/* Main Content - Right Side */}
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-xl ml-auto mr-12 md:mr-24 lg:mr-32">
-          <div className="animate-slide-up animation-delay-500">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-2 h-2 bg-foreground" />
-              <span className="font-mono-alt text-xs text-muted-foreground uppercase tracking-widest">
-                AI/ML Engineer
-              </span>
-            </div>
-          </div>
+      {/* Right Side - Light with Content */}
+      <div className="split-light min-h-[40vh] lg:min-h-screen flex flex-col justify-between p-8 lg:p-12">
+        {/* Main Title */}
+        <div className="pt-8 lg:pt-16">
+          <h1 className="font-display text-display-xl text-foreground leading-none animate-slide-in-right">
+            AI/ML
+          </h1>
+          <h1 className="font-display text-display-xl text-foreground leading-none animate-slide-in-right delay-100">
+            ENGINEER
+          </h1>
+          <h2 className="font-display text-display-lg text-foreground/80 leading-none mt-2 animate-slide-in-right delay-200">
+            & DEVELOPER
+          </h2>
+        </div>
 
-          <div className="animate-slide-up animation-delay-600">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light leading-tight mb-8">
-              The creative process of<br />
-              <span className="text-foreground">crafting intelligent solutions</span>
-            </h2>
-          </div>
+        {/* Description */}
+        <div className="py-8 lg:py-12 max-w-md animate-slide-up delay-400">
+          <p className="text-lg font-medium text-foreground mb-2">
+            I'm Ankur Saini.
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
+            <span className="dot-pink mr-2" />
+            I craft intelligent AI/ML solutions
+            <br />
+            that solve real problems, deliver insights, and push boundaries.
+          </p>
+        </div>
 
-          <div className="animate-slide-up animation-delay-700">
-            <div className="flex items-center gap-3 text-sm text-muted-foreground mb-8">
-              <MapPin className="w-3 h-3" />
-              <span className="font-mono-alt text-xs">Pilani, Rajasthan, India</span>
-            </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex gap-6 animate-slide-up animation-delay-800">
-            <a 
-              href="mailto:sainanku018@gmail.com"
-              className="group flex items-center gap-2 text-sm link-hover"
-            >
-              <Mail className="w-4 h-4" />
-              <span>Contact</span>
-            </a>
-            <a 
-              href="https://github.com/Ankursaini018" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="group flex items-center gap-2 text-sm link-hover"
-            >
-              <Github className="w-4 h-4" />
-              <span>GitHub</span>
-            </a>
-            <a 
-              href="https://linkedin.com/in/ankur-saini-596173374" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="group flex items-center gap-2 text-sm link-hover"
-            >
-              <Linkedin className="w-4 h-4" />
-              <span>LinkedIn</span>
-            </a>
-          </div>
+        {/* Social Links */}
+        <div className="flex gap-6 animate-slide-up delay-600">
+          <a
+            href="mailto:sainanku018@gmail.com"
+            className="flex items-center gap-2 text-foreground hover:text-pink transition-colors link-underline"
+          >
+            <Mail className="w-5 h-5" />
+            <span className="text-sm font-medium">Email</span>
+          </a>
+          <a
+            href="https://github.com/Ankursaini018"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-foreground hover:text-pink transition-colors link-underline"
+          >
+            <Github className="w-5 h-5" />
+            <span className="text-sm font-medium">GitHub</span>
+          </a>
+          <a
+            href="https://linkedin.com/in/ankur-saini-596173374"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-foreground hover:text-pink transition-colors link-underline"
+          >
+            <Linkedin className="w-5 h-5" />
+            <span className="text-sm font-medium">LinkedIn</span>
+          </a>
         </div>
       </div>
-
-      {/* Bottom Lines */}
-      <div className="absolute bottom-32 right-6 w-80 animate-line-draw animation-delay-1000">
-        <div className="line-horizontal" />
-        <div className="line-horizontal mt-8" />
-      </div>
-
-      {/* Scroll Indicator */}
-      <button 
-        onClick={scrollToAbout}
-        className="absolute bottom-6 right-6 text-muted-foreground hover:text-foreground transition-colors animate-fade-in animation-delay-1200"
-        aria-label="Scroll to about section"
-      >
-        <ChevronDown className="w-5 h-5" />
-      </button>
     </section>
   );
 };

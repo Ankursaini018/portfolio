@@ -29,59 +29,56 @@ const Skills = () => {
   const skillCategories = [
     {
       title: "Programming",
-      code: "2.1",
+      number: "01",
       skills: ["Python", "SQL", "C++", "Flask"],
     },
     {
       title: "Data Science",
-      code: "2.2",
+      number: "02",
       skills: ["NumPy", "Pandas", "Matplotlib", "Seaborn"],
     },
     {
       title: "Machine Learning",
-      code: "2.3",
+      number: "03",
       skills: ["Scikit-learn", "Deep Learning", "Neural Networks", "Model Training"],
     },
     {
       title: "Soft Skills",
-      code: "2.4",
+      number: "04",
       skills: ["Problem-Solving", "Team Collaboration", "Data Visualization", "Communication"],
     },
   ];
 
   return (
-    <section ref={sectionRef} id="skills" className="py-32 relative bg-noise">
-      {/* Chapter indicator */}
-      <div className="absolute top-8 left-6">
-        <p className="font-mono-alt text-xs text-muted-foreground scroll-animate">chapter 2:</p>
-        <p className="font-mono-alt text-xs text-foreground scroll-animate">skills</p>
-      </div>
-      
-      <div className="container mx-auto px-6">
-        <div className="mb-20">
-          <p className="section-subtitle mb-4 scroll-animate">Technical Arsenal</p>
-          <h2 className="section-title scroll-animate">Skills & Expertise</h2>
+    <section ref={sectionRef} id="skills" className="py-24 lg:py-32 bg-secondary">
+      <div className="container mx-auto px-6 lg:px-12">
+        <div className="mb-16 lg:mb-20">
+          <p className="text-sm text-muted-foreground mb-4 scroll-animate">Services</p>
+          <h2 className="font-display text-display-lg text-foreground scroll-animate">
+            SKILLS & EXPERTISE
+          </h2>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-foreground/10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {skillCategories.map((category, categoryIndex) => (
             <div 
               key={category.title}
-              className="scroll-animate bg-background p-8 group hover:bg-secondary/50 transition-colors duration-500"
+              className="scroll-animate bg-card p-8 group hover-lift border border-border"
               style={{ transitionDelay: `${categoryIndex * 100}ms` }}
             >
-              <div className="flex items-baseline justify-between mb-6">
-                <span className="font-mono-alt text-xs text-muted-foreground">{category.code}</span>
-                <h3 className="text-sm font-medium text-foreground uppercase tracking-wider">
-                  {category.title}
-                </h3>
+              <div className="flex items-center justify-between mb-6">
+                <span className="text-pink text-sm font-medium">{category.number}</span>
               </div>
+              <h3 className="font-display text-2xl text-foreground mb-6">
+                {category.title.toUpperCase()}
+              </h3>
               <div className="space-y-3">
                 {category.skills.map((skill) => (
                   <p 
                     key={skill}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-default"
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-default flex items-center gap-2"
                   >
+                    <span className="dot-pink" />
                     {skill}
                   </p>
                 ))}
@@ -89,11 +86,6 @@ const Skills = () => {
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Bottom line */}
-      <div className="absolute bottom-0 left-6 right-6">
-        <div className="line-horizontal" />
       </div>
     </section>
   );

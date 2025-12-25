@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Space Grotesk", "sans-serif"],
-        mono: ["Space Mono", "monospace"],
+        display: ["Bebas Neue", "sans-serif"],
+        body: ["Inter", "sans-serif"],
+        sans: ["Inter", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -50,6 +51,11 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        pink: "hsl(var(--pink-accent))",
+        dark: {
+          bg: "hsl(var(--dark-bg))",
+          fg: "hsl(var(--dark-fg))",
         },
       },
       borderRadius: {
