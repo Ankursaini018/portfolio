@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import Marquee from "./Marquee";
 
 const Skills = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -50,12 +51,19 @@ const Skills = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="skills" className="py-24 lg:py-32 bg-secondary">
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="mb-16 lg:mb-20">
-          <p className="text-sm text-muted-foreground mb-4 scroll-animate">Services</p>
-          <h2 className="font-display text-display-lg text-foreground scroll-animate">
-            SKILLS & EXPERTISE
+    <section ref={sectionRef} id="skills" className="py-24 lg:py-32 bg-secondary relative overflow-hidden">
+      {/* Background Marquee */}
+      <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full pointer-events-none opacity-30">
+        <Marquee text="SKILLS" speed="slow" direction="right" />
+      </div>
+
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+        <div className="mb-16 lg:mb-24">
+          <p className="text-sm text-muted-foreground mb-4 scroll-animate uppercase tracking-[0.3em]">
+            02 — Expertise
+          </p>
+          <h2 className="font-display text-display-xl text-foreground scroll-animate">
+            SKILLS & TOOLS
           </h2>
         </div>
         
@@ -63,22 +71,22 @@ const Skills = () => {
           {skillCategories.map((category, categoryIndex) => (
             <div 
               key={category.title}
-              className="scroll-animate bg-card p-8 group hover-lift border border-border"
+              className="scroll-animate bg-card p-8 group hover-lift border border-border hover:border-red transition-all duration-500"
               style={{ transitionDelay: `${categoryIndex * 100}ms` }}
             >
-              <div className="flex items-center justify-between mb-6">
-                <span className="text-pink text-sm font-medium">{category.number}</span>
+              <div className="flex items-center justify-between mb-8">
+                <span className="text-red text-sm font-medium">{category.number}</span>
               </div>
-              <h3 className="font-display text-2xl text-foreground mb-6">
+              <h3 className="font-display text-3xl text-foreground mb-8 group-hover:text-red transition-colors">
                 {category.title.toUpperCase()}
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {category.skills.map((skill) => (
                   <p 
                     key={skill}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-default flex items-center gap-2"
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-default flex items-center gap-3"
                   >
-                    <span className="dot-pink" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-red" />
                     {skill}
                   </p>
                 ))}
