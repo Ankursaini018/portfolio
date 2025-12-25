@@ -131,7 +131,7 @@ const Hero = () => {
         </div>
 
         {/* Right Side - Profile Picture */}
-        <div className="relative min-h-[50vh] lg:min-h-screen order-1 lg:order-2 overflow-hidden">
+        <div className="relative min-h-[50vh] lg:min-h-screen order-1 lg:order-2 overflow-hidden group cursor-pointer">
           {/* Image */}
           <div 
             className={`absolute inset-0 ${isLoaded ? "image-reveal" : ""}`}
@@ -140,7 +140,7 @@ const Hero = () => {
             <img
               src={profilePicture}
               alt="Ankur Saini"
-              className={`w-full h-full object-cover object-center transition-all duration-[2s] ${
+              className={`w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-110 ${
                 isLoaded ? "scale-100" : "scale-110"
               }`}
             />
