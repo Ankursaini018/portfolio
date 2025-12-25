@@ -30,7 +30,7 @@ const Projects = () => {
   const projects = [
     {
       number: "001",
-      year: "2024",
+      year: "2025",
       title: "SkinScan AI",
       subtitle: "Deep Learning & Healthcare",
       description: "AI-powered skin disease detection web application that detects skin diseases from uploaded images using deep learning and computer vision.",
@@ -38,7 +38,7 @@ const Projects = () => {
     },
     {
       number: "002",
-      year: "2024",
+      year: "2025",
       title: "Loan Approval Prediction",
       subtitle: "ML & Finance",
       description: "Designed a machine learning model for predicting loan approvals. Analyzes applicant data to determine creditworthiness and loan eligibility.",
@@ -46,7 +46,7 @@ const Projects = () => {
     },
     {
       number: "003",
-      year: "2024",
+      year: "2025",
       title: "HealthTech ML App",
       subtitle: "ML & Healthcare",
       description: "Created a health diagnosis tool with machine learning and Flask. Provides intelligent health assessments based on user-provided symptoms and data.",
@@ -54,7 +54,7 @@ const Projects = () => {
     },
     {
       number: "004",
-      year: "2024",
+      year: "2025",
       title: "Crop Recommendation",
       subtitle: "ML & Agriculture",
       description: "Developed AI-based system for recommending optimal crops based on environmental data including soil type, weather conditions, and historical patterns.",
