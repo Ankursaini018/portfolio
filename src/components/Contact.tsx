@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Mail, Phone, MapPin, Github, Linkedin, Send, Loader2, CheckCircle, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, Send, Loader2, CheckCircle, ArrowUpRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -140,48 +140,48 @@ const Contact = () => {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="py-32 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-subtle" />
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2" />
+    <section ref={sectionRef} id="contact" className="py-32 relative bg-noise">
+      {/* Chapter indicator */}
+      <div className="absolute top-8 left-6">
+        <p className="font-mono-alt text-xs text-muted-foreground scroll-animate">chapter 6:</p>
+        <p className="font-mono-alt text-xs text-foreground scroll-animate">contact</p>
+      </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-20">
-          <p className="text-primary font-mono text-sm mb-4 tracking-widest uppercase scroll-animate">Get In Touch</p>
+      <div className="container mx-auto px-6">
+        <div className="mb-20">
+          <p className="section-subtitle mb-4 scroll-animate">Get In Touch</p>
           <h2 className="section-title scroll-animate">Contact Me</h2>
-          <p className="section-subtitle mx-auto mt-4 scroll-animate">
+          <p className="text-muted-foreground mt-6 max-w-lg scroll-animate">
             Have a project in mind or want to collaborate? Drop me a message!
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-px bg-foreground/10">
           {/* Contact Form */}
-          <div className="scroll-animate glass rounded-xl p-8 card-hover">
-            <h3 className="font-mono font-bold text-xl text-foreground mb-6 flex items-center gap-2">
-              <Send className="w-5 h-5 text-primary" />
+          <div className="scroll-animate bg-background p-8 lg:p-12">
+            <h3 className="text-sm font-medium text-foreground uppercase tracking-wider mb-8 flex items-center gap-2">
+              <Send className="w-4 h-4" />
               Send a Message
             </h3>
 
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center py-12 text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 animate-pulse-glow">
-                  <CheckCircle className="w-8 h-8 text-primary" />
-                </div>
-                <h4 className="font-mono font-bold text-lg text-foreground mb-2">Message Sent!</h4>
-                <p className="text-muted-foreground">Thank you for reaching out. I'll respond as soon as possible.</p>
+                <CheckCircle className="w-8 h-8 text-foreground mb-4" />
+                <h4 className="text-lg font-medium text-foreground mb-2">Message Sent!</h4>
+                <p className="text-sm text-muted-foreground">Thank you for reaching out. I'll respond as soon as possible.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <Input
                     name="name"
                     placeholder="Your Name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className={`bg-secondary/50 border-border/50 focus:border-primary focus:bg-secondary transition-all ${errors.name ? "border-destructive" : ""}`}
+                    className={`bg-transparent border-0 border-b border-foreground/20 rounded-none px-0 focus:border-foreground focus-visible:ring-0 ${errors.name ? "border-destructive" : ""}`}
                     disabled={isSubmitting}
                   />
-                  {errors.name && <p className="text-destructive text-sm mt-1">{errors.name}</p>}
+                  {errors.name && <p className="text-destructive text-xs mt-2">{errors.name}</p>}
                 </div>
 
                 <div>
@@ -191,10 +191,10 @@ const Contact = () => {
                     placeholder="Your Email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className={`bg-secondary/50 border-border/50 focus:border-primary focus:bg-secondary transition-all ${errors.email ? "border-destructive" : ""}`}
+                    className={`bg-transparent border-0 border-b border-foreground/20 rounded-none px-0 focus:border-foreground focus-visible:ring-0 ${errors.email ? "border-destructive" : ""}`}
                     disabled={isSubmitting}
                   />
-                  {errors.email && <p className="text-destructive text-sm mt-1">{errors.email}</p>}
+                  {errors.email && <p className="text-destructive text-xs mt-2">{errors.email}</p>}
                 </div>
 
                 <div>
@@ -203,7 +203,7 @@ const Contact = () => {
                     placeholder="Subject (Optional)"
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="bg-secondary/50 border-border/50 focus:border-primary focus:bg-secondary transition-all"
+                    className="bg-transparent border-0 border-b border-foreground/20 rounded-none px-0 focus:border-foreground focus-visible:ring-0"
                     disabled={isSubmitting}
                   />
                 </div>
@@ -214,15 +214,15 @@ const Contact = () => {
                     placeholder="Your Message"
                     value={formData.message}
                     onChange={handleInputChange}
-                    className={`bg-secondary/50 border-border/50 focus:border-primary focus:bg-secondary transition-all min-h-[150px] resize-none ${errors.message ? "border-destructive" : ""}`}
+                    className={`bg-transparent border-0 border-b border-foreground/20 rounded-none px-0 focus:border-foreground focus-visible:ring-0 min-h-[120px] resize-none ${errors.message ? "border-destructive" : ""}`}
                     disabled={isSubmitting}
                   />
-                  {errors.message && <p className="text-destructive text-sm mt-1">{errors.message}</p>}
+                  {errors.message && <p className="text-destructive text-xs mt-2">{errors.message}</p>}
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-primary text-primary-foreground font-medium glow-primary hover:opacity-90 transition-all group"
+                  className="w-full bg-foreground text-background hover:bg-foreground/90 rounded-none font-medium"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -233,7 +233,7 @@ const Contact = () => {
                   ) : (
                     <>
                       Send Message
-                      <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                      <ArrowUpRight className="w-4 h-4 ml-2" />
                     </>
                   )}
                 </Button>
@@ -242,43 +242,39 @@ const Contact = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-6">
-            <div className="scroll-animate glass rounded-xl p-8 card-hover">
-              <h3 className="font-mono font-bold text-xl text-foreground mb-6">Contact Info</h3>
-              <div className="space-y-4">
+          <div className="bg-background p-8 lg:p-12 space-y-8">
+            <div className="scroll-animate">
+              <h3 className="text-sm font-medium text-foreground uppercase tracking-wider mb-8">Contact Info</h3>
+              <div className="space-y-6">
                 {contactInfo.map((info) => (
                   <a
                     key={info.label}
                     href={info.href || undefined}
-                    className={`flex items-center gap-4 p-4 rounded-lg hover:bg-secondary/50 transition-all duration-300 group ${info.href ? "cursor-pointer" : "cursor-default"}`}
+                    className={`flex items-start gap-4 group ${info.href ? "cursor-pointer" : "cursor-default"}`}
                   >
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                      <info.icon className="w-5 h-5 text-primary" />
-                    </div>
+                    <info.icon className="w-4 h-4 text-muted-foreground mt-1" />
                     <div>
-                      <p className="text-sm text-muted-foreground">{info.label}</p>
-                      <p className="font-medium text-foreground">{info.value}</p>
+                      <p className="font-mono-alt text-xs text-muted-foreground uppercase tracking-wider">{info.label}</p>
+                      <p className="text-sm text-foreground group-hover:text-muted-foreground transition-colors">{info.value}</p>
                     </div>
                   </a>
                 ))}
               </div>
             </div>
 
-            <div className="scroll-animate glass rounded-xl p-8 card-hover">
-              <h3 className="font-mono font-bold text-xl text-foreground mb-6">Connect With Me</h3>
-              <div className="flex gap-4">
+            <div className="scroll-animate pt-8 border-t border-foreground/10">
+              <h3 className="text-sm font-medium text-foreground uppercase tracking-wider mb-6">Connect</h3>
+              <div className="flex gap-6">
                 {socials.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 p-4 rounded-xl bg-secondary/50 border border-border/50 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 group"
+                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors link-hover"
                   >
-                    <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                    <span className="font-medium text-muted-foreground group-hover:text-primary transition-colors">
-                      {social.label}
-                    </span>
+                    <social.icon className="w-4 h-4" />
+                    <span>{social.label}</span>
                   </a>
                 ))}
               </div>

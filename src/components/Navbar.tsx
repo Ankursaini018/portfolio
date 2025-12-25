@@ -37,7 +37,7 @@ const Navbar = () => {
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? "glass border-b border-border/50" 
+          ? "bg-background/95 backdrop-blur-sm border-b border-foreground/10" 
           : "bg-transparent"
       }`}
     >
@@ -45,23 +45,22 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <a 
             href="#" 
-            className="font-mono font-bold text-2xl text-gradient hover:opacity-80 transition-opacity"
+            className="font-mono-alt text-sm text-foreground hover:text-muted-foreground transition-colors"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            AS
+            ©AS
           </a>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link, index) => (
+            {navLinks.map((link) => (
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="text-muted-foreground hover:text-foreground transition-colors font-medium text-sm link-underline"
-                style={{ animationDelay: `${index * 50}ms` }}
+                className="text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider link-hover"
               >
                 {link.label}
               </button>
@@ -71,34 +70,32 @@ const Navbar = () => {
                 variant="outline"
                 size="sm"
                 onClick={() => navigate('/admin')}
-                className="border-primary/30 text-primary hover:bg-primary/10"
+                className="border-foreground/20 text-foreground hover:bg-foreground hover:text-background rounded-none text-xs"
               >
-                <Shield className="w-4 h-4 mr-1" />
+                <Shield className="w-3 h-3 mr-1" />
                 Admin
               </Button>
             )}
           </div>
           
           {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden text-foreground hover:bg-secondary/50"
+          <button
+            className="md:hidden text-foreground hover:text-muted-foreground transition-colors font-mono-alt text-xs"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </Button>
+            {isMobileMenuOpen ? "Close [x]" : "Menu [+]"}
+          </button>
         </div>
         
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-6 border-t border-border/50 animate-fade-in">
-            <div className="flex flex-col gap-4">
+          <div className="md:hidden py-8 border-t border-foreground/10 animate-fade-in">
+            <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-muted-foreground hover:text-foreground transition-colors font-medium text-left py-2 hover:pl-2 duration-300"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left uppercase tracking-wider"
                 >
                   {link.label}
                 </button>
@@ -111,9 +108,9 @@ const Navbar = () => {
                     navigate('/admin');
                     setIsMobileMenuOpen(false);
                   }}
-                  className="border-primary/30 text-primary hover:bg-primary/10 w-fit"
+                  className="border-foreground/20 text-foreground hover:bg-foreground hover:text-background rounded-none w-fit text-xs"
                 >
-                  <Shield className="w-4 h-4 mr-1" />
+                  <Shield className="w-3 h-3 mr-1" />
                   Admin
                 </Button>
               )}

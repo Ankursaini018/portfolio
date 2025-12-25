@@ -1,5 +1,4 @@
 import { Brain, Sprout, ExternalLink, Github, ArrowUpRight } from "lucide-react";
-import { Button } from "./ui/button";
 import { useEffect, useRef } from "react";
 
 const Projects = () => {
@@ -30,93 +29,83 @@ const Projects = () => {
 
   const projects = [
     {
+      number: "01",
       title: "SkinScan AI",
       description: "AI-powered skin disease detection web application using deep learning. Utilizes convolutional neural networks to analyze skin images and provide accurate disease classification.",
-      icon: Brain,
       tags: ["Deep Learning", "Python", "Flask", "CNN"],
     },
     {
+      number: "02",
       title: "Crop Recommendation System",
       description: "AI-based crop recommendation system that analyzes environmental data to suggest optimal crops for farmers. Considers factors like soil type, weather, and historical data.",
-      icon: Sprout,
       tags: ["Machine Learning", "Data Analysis", "Python", "Scikit-learn"],
     },
   ];
 
   return (
-    <section ref={sectionRef} id="projects" className="py-32 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-subtle" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
+    <section ref={sectionRef} id="projects" className="py-32 relative bg-noise">
+      {/* Chapter indicator */}
+      <div className="absolute top-8 left-6">
+        <p className="font-mono-alt text-xs text-muted-foreground scroll-animate">chapter 3:</p>
+        <p className="font-mono-alt text-xs text-foreground scroll-animate">projects</p>
+      </div>
       
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-20">
-          <p className="text-primary font-mono text-sm mb-4 tracking-widest uppercase scroll-animate">Featured Work</p>
+      <div className="container mx-auto px-6">
+        <div className="mb-20">
+          <p className="section-subtitle mb-4 scroll-animate">Featured Work</p>
           <h2 className="section-title scroll-animate">Projects</h2>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="space-y-px">
           {projects.map((project, index) => (
             <div 
               key={project.title}
-              className="scroll-animate group glass rounded-xl overflow-hidden card-hover"
+              className="scroll-animate group border-t border-foreground/10 py-12 hover:bg-secondary/30 transition-all duration-500"
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              {/* Project header with gradient */}
-              <div className="h-40 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.1),transparent_70%)]" />
-                <div className="relative">
-                  <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl scale-150 group-hover:scale-[2] transition-transform duration-500" />
-                  <project.icon className="relative w-16 h-16 text-primary group-hover:scale-110 transition-transform duration-300" />
+              <div className="grid lg:grid-cols-12 gap-8 items-start">
+                {/* Number */}
+                <div className="lg:col-span-1">
+                  <span className="font-mono-alt text-xs text-muted-foreground">{project.number}</span>
                 </div>
-                
-                {/* Hover arrow */}
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <ArrowUpRight className="w-5 h-5 text-primary" />
+
+                {/* Title */}
+                <div className="lg:col-span-3">
+                  <h3 className="text-xl font-medium text-foreground group-hover:text-foreground/80 transition-colors flex items-center gap-2">
+                    {project.title}
+                    <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </h3>
                 </div>
-              </div>
-              
-              <div className="p-6">
-                <h3 className="font-mono font-bold text-xl text-foreground mb-3 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground mb-5 leading-relaxed">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag) => (
-                    <span 
-                      key={tag}
-                      className="px-3 py-1 bg-secondary/80 rounded-lg text-xs text-primary font-mono"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+
+                {/* Description */}
+                <div className="lg:col-span-5">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {project.description}
+                  </p>
                 </div>
-                
-                <div className="flex gap-3">
-                  <Button 
-                    variant="outline" 
-                    size="sm"
-                    className="border-border/50 text-foreground hover:bg-primary/10 hover:border-primary/30 transition-all"
-                  >
-                    <Github className="w-4 h-4 mr-2" />
-                    Code
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    size="sm"
-                    className="border-border/50 text-foreground hover:bg-primary/10 hover:border-primary/30 transition-all"
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Demo
-                  </Button>
+
+                {/* Tags */}
+                <div className="lg:col-span-3">
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span 
+                        key={tag}
+                        className="font-mono-alt text-xs text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        [{tag}]
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Bottom line */}
+      <div className="absolute bottom-0 left-6 right-6">
+        <div className="line-horizontal" />
       </div>
     </section>
   );

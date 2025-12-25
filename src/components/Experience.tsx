@@ -1,4 +1,4 @@
-import { Briefcase, Calendar, MapPin } from "lucide-react";
+import { Calendar, MapPin } from "lucide-react";
 import { useEffect, useRef } from "react";
 
 const Experience = () => {
@@ -43,56 +43,62 @@ const Experience = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="experience" className="py-32 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute top-0 left-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2" />
+    <section ref={sectionRef} id="experience" className="py-32 relative bg-noise">
+      {/* Chapter indicator */}
+      <div className="absolute top-8 left-6">
+        <p className="font-mono-alt text-xs text-muted-foreground scroll-animate">chapter 4:</p>
+        <p className="font-mono-alt text-xs text-foreground scroll-animate">experience</p>
+      </div>
       
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-20">
-          <p className="text-primary font-mono text-sm mb-4 tracking-widest uppercase scroll-animate">Career Journey</p>
+      <div className="container mx-auto px-6">
+        <div className="mb-20">
+          <p className="section-subtitle mb-4 scroll-animate">Career Journey</p>
           <h2 className="section-title scroll-animate">Experience</h2>
         </div>
         
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl">
           {experiences.map((exp, index) => (
             <div 
               key={index}
-              className="scroll-animate relative pl-8 pb-8 border-l border-primary/20 last:pb-0"
+              className="scroll-animate"
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              {/* Timeline dot */}
-              <div className="absolute left-0 top-0 w-3 h-3 -translate-x-1/2 rounded-full bg-primary animate-pulse-glow" />
-              
-              <div className="glass rounded-xl p-8 ml-4 card-hover group">
-                <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
-                  <div>
-                    <h3 className="font-mono font-bold text-xl text-foreground group-hover:text-primary transition-colors">{exp.title}</h3>
-                    <p className="text-primary/80 font-medium">{exp.company}</p>
+              <div className="grid lg:grid-cols-12 gap-8 border-t border-foreground/10 py-12">
+                {/* Left Column - Meta */}
+                <div className="lg:col-span-4 space-y-4">
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <Calendar className="w-3 h-3" />
+                    <span className="font-mono-alt text-xs">{exp.period}</span>
                   </div>
-                  <div className="flex flex-col gap-2 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4" />
-                      <span>{exp.period}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4" />
-                      <span>{exp.location}</span>
-                    </div>
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <MapPin className="w-3 h-3" />
+                    <span className="font-mono-alt text-xs">{exp.location}</span>
                   </div>
                 </div>
-                
-                <ul className="space-y-3">
-                  {exp.responsibilities.map((resp, respIndex) => (
-                    <li key={respIndex} className="flex items-start gap-3 text-muted-foreground">
-                      <span className="text-primary mt-1.5 text-xs">●</span>
-                      <span>{resp}</span>
-                    </li>
-                  ))}
-                </ul>
+
+                {/* Right Column - Content */}
+                <div className="lg:col-span-8">
+                  <h3 className="text-xl font-medium text-foreground mb-2">{exp.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-6">{exp.company}</p>
+                  
+                  <ul className="space-y-3">
+                    {exp.responsibilities.map((resp, respIndex) => (
+                      <li key={respIndex} className="flex items-start gap-3 text-sm text-muted-foreground">
+                        <span className="text-foreground/50 mt-1">→</span>
+                        <span>{resp}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Bottom line */}
+      <div className="absolute bottom-0 left-6 right-6">
+        <div className="line-horizontal" />
       </div>
     </section>
   );
