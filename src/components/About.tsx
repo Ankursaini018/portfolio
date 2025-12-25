@@ -18,24 +18,8 @@ const About = () => {
         </div>
         
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Profile Picture - Left Side */}
-          <div className="flex justify-center lg:justify-end order-1 lg:order-none">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-primary rounded-2xl blur-2xl opacity-40 animate-pulse-glow scale-110" />
-              <div className="absolute -inset-4 bg-primary/5 rounded-3xl" />
-              <img 
-                src={profilePicture} 
-                alt="Ankur Saini" 
-                className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-2xl object-cover border-4 border-primary/30 shadow-2xl"
-              />
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 border-2 border-primary/30 rounded-xl" />
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 border-2 border-accent/30 rounded-xl" />
-            </div>
-          </div>
-
-          {/* Content - Right Side */}
-          <div className="space-y-6 order-2 lg:order-none">
+          {/* Content - Left Side */}
+          <div className="space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
               Dynamic <span className="text-primary font-semibold">AI/ML & Data Science enthusiast</span> with 
               practical experience in developing and deploying machine learning models. My expertise in 
@@ -67,6 +51,21 @@ const About = () => {
                   <p className="text-xs text-muted-foreground">{item.description}</p>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Profile Picture - Right Side */}
+          <div className="flex justify-center lg:justify-start">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-primary rounded-full blur-2xl opacity-40 animate-pulse-glow scale-110" />
+              <img 
+                src={profilePicture} 
+                alt="Ankur Saini" 
+                className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full object-cover border-4 border-primary/30 shadow-2xl"
+              />
+              {/* Decorative ring */}
+              <div className="absolute -inset-3 border-2 border-primary/20 rounded-full" />
+              <div className="absolute -inset-6 border border-primary/10 rounded-full" />
             </div>
           </div>
         </div>
