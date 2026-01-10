@@ -1,5 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, Suspense } from "react";
 import Marquee from "./Marquee";
+import FloatingShapes from "./3d/FloatingShapes";
+import TiltCard from "./3d/TiltCard";
 
 const Skills = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -52,6 +54,11 @@ const Skills = () => {
 
   return (
     <section ref={sectionRef} id="skills" className="py-24 lg:py-32 bg-secondary relative overflow-hidden">
+      {/* 3D Background */}
+      <Suspense fallback={null}>
+        <FloatingShapes variant="skills" className="z-0 opacity-50" />
+      </Suspense>
+
       {/* Background Marquee */}
       <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full pointer-events-none opacity-30">
         <Marquee text="SKILLS" speed="slow" direction="right" />
@@ -69,29 +76,30 @@ const Skills = () => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {skillCategories.map((category, categoryIndex) => (
-            <div 
-              key={category.title}
-              className="scroll-animate bg-card p-8 group hover-lift border border-border hover:border-red transition-all duration-500"
-              style={{ transitionDelay: `${categoryIndex * 100}ms` }}
-            >
-              <div className="flex items-center justify-between mb-8">
-                <span className="text-red text-sm font-medium">{category.number}</span>
+            <TiltCard key={category.title} maxTilt={12} glareEnabled>
+              <div 
+                className="scroll-animate bg-card/90 backdrop-blur-sm p-8 group hover-lift border border-border hover:border-red transition-all duration-500 h-full"
+                style={{ transitionDelay: `${categoryIndex * 100}ms` }}
+              >
+                <div className="flex items-center justify-between mb-8">
+                  <span className="text-red text-sm font-medium">{category.number}</span>
+                </div>
+                <h3 className="font-display text-3xl text-foreground mb-8 group-hover:text-red transition-colors">
+                  {category.title.toUpperCase()}
+                </h3>
+                <div className="space-y-4">
+                  {category.skills.map((skill) => (
+                    <p 
+                      key={skill}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-default flex items-center gap-3"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-red" />
+                      {skill}
+                    </p>
+                  ))}
+                </div>
               </div>
-              <h3 className="font-display text-3xl text-foreground mb-8 group-hover:text-red transition-colors">
-                {category.title.toUpperCase()}
-              </h3>
-              <div className="space-y-4">
-                {category.skills.map((skill) => (
-                  <p 
-                    key={skill}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-default flex items-center gap-3"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-red" />
-                    {skill}
-                  </p>
-                ))}
-              </div>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>

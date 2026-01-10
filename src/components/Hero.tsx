@@ -1,6 +1,7 @@
 import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import profilePicture from "@/assets/profile-picture.jpg";
+import FloatingShapes from "./3d/FloatingShapes";
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -16,7 +17,12 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen w-full bg-background relative overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+      {/* 3D Background */}
+      <Suspense fallback={null}>
+        <FloatingShapes variant="hero" className="z-0" />
+      </Suspense>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen relative z-10">
         {/* Left Side - Content */}
         <div className="relative z-10 flex flex-col justify-between px-6 md:px-12 lg:px-16 py-8 order-2 lg:order-1">
           {/* Top Bar */}
