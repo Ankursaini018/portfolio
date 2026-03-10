@@ -132,12 +132,6 @@ const Projects = () => {
                   )}
                 </div>
 
-                {/* Arrow */}
-                <div className="lg:col-span-1 flex items-center justify-end">
-                  <div className="w-12 h-12 border border-border rounded-full flex items-center justify-center group-hover:border-red group-hover:bg-red transition-all duration-300">
-                    <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
-                  </div>
-                </div>
               </div>
             </div>
           ))}
