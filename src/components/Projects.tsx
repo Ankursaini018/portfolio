@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Github } from "lucide-react";
 import { useEffect, useRef } from "react";
 import Marquee from "./Marquee";
 
@@ -32,29 +32,23 @@ const Projects = () => {
     {
       number: "001",
       year: "2025",
+      title: "AI Document Assistant",
+      subtitle: "RAG System & AI",
+      description: "An AI-powered document assistant built using Retrieval-Augmented Generation (RAG). Users can upload documents and ask questions in natural language. The system retrieves relevant document chunks using vector search and generates answers with source citations.",
+      tags: ["Python", "RAG", "LLM", "Vector Search", "AI", "Machine Learning"],
+      liveDemo: "https://ragsystem.lovable.app",
+      github: "#",
+    },
+    {
+      number: "002",
+      year: "2025",
       title: "SkinScan AI",
       subtitle: "Deep Learning & Healthcare",
       description: "AI-powered skin disease detection web application that detects skin diseases from uploaded images using deep learning and computer vision.",
       tags: ["Deep Learning", "Python", "Flask", "CNN"],
     },
     {
-      number: "002",
-      year: "2025",
-      title: "Loan Approval Prediction",
-      subtitle: "ML & Finance",
-      description: "Designed a machine learning model for predicting loan approvals. Analyzes applicant data to determine creditworthiness and loan eligibility.",
-      tags: ["Machine Learning", "Python", "Scikit-learn", "Data Analysis"],
-    },
-    {
       number: "003",
-      year: "2025",
-      title: "HealthTech ML App",
-      subtitle: "ML & Healthcare",
-      description: "Created a health diagnosis tool with machine learning and Flask. Provides intelligent health assessments based on user-provided symptoms and data.",
-      tags: ["Machine Learning", "Flask", "Python", "Healthcare"],
-    },
-    {
-      number: "004",
       year: "2025",
       title: "Crop Recommendation",
       subtitle: "ML & Agriculture",
@@ -120,6 +114,20 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>
+                  {(project.liveDemo || project.github) && (
+                    <div className="flex gap-4 mt-6">
+                      {project.liveDemo && (
+                        <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-red hover:text-foreground transition-colors border border-red px-4 py-2 hover:bg-red">
+                          <ExternalLink className="w-4 h-4" /> Live Demo
+                        </a>
+                      )}
+                      {project.github && (
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors border border-border px-4 py-2 hover:border-red">
+                          <Github className="w-4 h-4" /> GitHub
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 {/* Arrow */}
