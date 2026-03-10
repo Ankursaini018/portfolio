@@ -31,7 +31,7 @@ const Projects = () => {
   const projects = [
     {
       number: "001",
-      year: "2025",
+      year: "2026",
       title: "AI Document Assistant",
       subtitle: "RAG System & AI",
       description: "An AI-powered document assistant built using Retrieval-Augmented Generation (RAG). Users can upload documents and ask questions in natural language. The system retrieves relevant document chunks using vector search and generates answers with source citations.",
@@ -86,7 +86,7 @@ const Projects = () => {
               className="scroll-animate group border border-border bg-card hover:border-red transition-all duration-500 hover-lift"
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <div className="grid lg:grid-cols-12 gap-6 p-8 lg:p-10">
+              <div className="grid lg:grid-cols-11 gap-6 p-8 lg:p-10">
                 {/* Number & Year */}
                 <div className="lg:col-span-2 flex lg:flex-col gap-4 lg:gap-2">
                   <span className="text-red font-medium text-lg">{project.number}</span>
@@ -132,12 +132,6 @@ const Projects = () => {
                   )}
                 </div>
 
-                {/* Arrow */}
-                <div className="lg:col-span-1 flex items-center justify-end">
-                  <div className="w-12 h-12 border border-border rounded-full flex items-center justify-center group-hover:border-red group-hover:bg-red transition-all duration-300">
-                    <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
-                  </div>
-                </div>
               </div>
             </div>
           ))}
