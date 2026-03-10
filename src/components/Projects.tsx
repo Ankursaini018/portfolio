@@ -37,7 +37,7 @@ const Projects = () => {
       description: "An AI-powered document assistant built using Retrieval-Augmented Generation (RAG). Users can upload documents and ask questions in natural language. The system retrieves relevant document chunks using vector search and generates answers with source citations.",
       tags: ["Python", "RAG", "LLM", "Vector Search", "AI", "Machine Learning"],
       liveDemo: "https://ragsystem.lovable.app",
-      github: "#",
+      github: "https://github.com/Ankursaini018/ragsystem.git",
     },
     {
       number: "002",
@@ -46,6 +46,7 @@ const Projects = () => {
       subtitle: "Deep Learning & Healthcare",
       description: "AI-powered skin disease detection web application that detects skin diseases from uploaded images using deep learning and computer vision.",
       tags: ["Deep Learning", "Python", "Flask", "CNN"],
+      github: "https://github.com/Ankursaini018/Skin-disease.git",
     },
     {
       number: "003",
@@ -54,6 +55,7 @@ const Projects = () => {
       subtitle: "ML & Agriculture",
       description: "Developed AI-based system for recommending optimal crops based on environmental data including soil type, weather conditions, and historical patterns.",
       tags: ["Machine Learning", "Data Analysis", "Python", "Scikit-learn"],
+      github: "https://github.com/Ankursaini018/crop-prediction-system.git",
     },
   ];
 
