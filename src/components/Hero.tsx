@@ -90,7 +90,7 @@ const Hero = () => {
               style={{ animationDelay: "1.2s" }}
             >
               <a
-                href="mailto:sainanku018@gmail.com"
+                href="mailto:officialankur0707@gmail.com"
                 className="group flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300"
               >
                 <Mail className="w-5 h-5" />
