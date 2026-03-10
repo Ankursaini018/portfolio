@@ -114,6 +114,20 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>
+                  {(project.liveDemo || project.github) && (
+                    <div className="flex gap-4 mt-6">
+                      {project.liveDemo && (
+                        <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-red hover:text-foreground transition-colors border border-red px-4 py-2 hover:bg-red">
+                          <ExternalLink className="w-4 h-4" /> Live Demo
+                        </a>
+                      )}
+                      {project.github && (
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors border border-border px-4 py-2 hover:border-red">
+                          <Github className="w-4 h-4" /> GitHub
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 {/* Arrow */}
