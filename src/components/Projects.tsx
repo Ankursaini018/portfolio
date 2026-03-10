@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Github } from "lucide-react";
 import { useEffect, useRef } from "react";
 import Marquee from "./Marquee";
 
