@@ -6,7 +6,7 @@ const Footer = () => {
   };
 
   const socials = [
-    { icon: Mail, href: "mailto:sainanku018@gmail.com", label: "Email" },
+    { icon: Mail, href: "mailto:officialankur0707@gmail.com", label: "Email" },
     { icon: Github, href: "https://github.com/Ankursaini018", label: "GitHub" },
     { icon: Linkedin, href: "https://linkedin.com/in/ankur-saini-596173374", label: "LinkedIn" },
   ];
