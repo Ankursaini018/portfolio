@@ -31,7 +31,7 @@ const Projects = () => {
   const projects = [
     {
       number: "001",
-      year: "2025",
+      year: "2026",
       title: "AI Document Assistant",
       subtitle: "RAG System & AI",
       description: "An AI-powered document assistant built using Retrieval-Augmented Generation (RAG). Users can upload documents and ask questions in natural language. The system retrieves relevant document chunks using vector search and generates answers with source citations.",
