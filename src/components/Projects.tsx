@@ -86,7 +86,7 @@ const Projects = () => {
               className="scroll-animate group border border-border bg-card hover:border-red transition-all duration-500 hover-lift"
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <div className="grid lg:grid-cols-12 gap-6 p-8 lg:p-10">
+              <div className="grid lg:grid-cols-11 gap-6 p-8 lg:p-10">
                 {/* Number & Year */}
                 <div className="lg:col-span-2 flex lg:flex-col gap-4 lg:gap-2">
                   <span className="text-red font-medium text-lg">{project.number}</span>
