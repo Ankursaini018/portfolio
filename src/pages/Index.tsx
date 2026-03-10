@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet-async";
-import { Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -9,7 +8,6 @@ import Projects from "@/components/Projects";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import MouseFollower from "@/components/3d/MouseFollower";
 
 const Index = () => {
   return (
@@ -24,21 +22,16 @@ const Index = () => {
         <link rel="canonical" href="https://ankursaini.dev" />
       </Helmet>
       
-      {/* Custom 3D Mouse Cursor */}
-      <MouseFollower />
-      
       <div className="min-h-screen bg-background">
         <Navbar />
         <main>
-          <Suspense fallback={<div className="min-h-screen bg-background" />}>
-            <Hero />
-            <About />
-            <Skills />
-            <Experience />
-            <Projects />
-            <Education />
-            <Contact />
-          </Suspense>
+          <Hero />
+          <About />
+          <Skills />
+          <Experience />
+          <Projects />
+          <Education />
+          <Contact />
         </main>
         <Footer />
       </div>

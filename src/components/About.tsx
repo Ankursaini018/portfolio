@@ -1,8 +1,6 @@
 import { Brain, Code2, Database, TrendingUp } from "lucide-react";
-import { useEffect, useRef, Suspense } from "react";
+import { useEffect, useRef } from "react";
 import Marquee from "./Marquee";
-import FloatingShapes from "./3d/FloatingShapes";
-import TiltCard from "./3d/TiltCard";
 
 const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -39,11 +37,6 @@ const About = () => {
 
   return (
     <section ref={sectionRef} id="about" className="py-24 lg:py-32 bg-background relative overflow-hidden">
-      {/* 3D Background */}
-      <Suspense fallback={null}>
-        <FloatingShapes variant="about" className="z-0 opacity-60" />
-      </Suspense>
-
       {/* Background Marquee */}
       <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full pointer-events-none opacity-50">
         <Marquee text="ABOUT" speed="slow" />
@@ -84,39 +77,41 @@ const About = () => {
               at B.K. Birla Institute of Engineering & Technology, Pilani.
             </p>
 
-            {/* Skills Grid with Tilt Effect */}
+            {/* Skills Grid */}
             <div className="grid grid-cols-2 gap-4 pt-8">
               {highlights.map((item, index) => (
-                <TiltCard key={item.label} className="scroll-animate" maxTilt={10}>
-                  <div 
-                    className="card-minimal p-6 group hover-lift h-full bg-card/80 backdrop-blur-sm border border-border/50"
-                    style={{ transitionDelay: `${index * 100}ms` }}
-                  >
-                    <item.icon className="w-6 h-6 text-red mb-4 transition-transform group-hover:scale-110" />
-                    <h3 className="text-sm font-medium text-foreground mb-1">{item.label}</h3>
-                    <p className="text-xs text-muted-foreground">{item.description}</p>
-                  </div>
-                </TiltCard>
+                <div 
+                  key={item.label}
+                  className="scroll-animate card-minimal p-6 group hover-lift"
+                  style={{ transitionDelay: `${index * 100}ms` }}
+                >
+                  <item.icon className="w-6 h-6 text-red mb-4 transition-transform group-hover:scale-110" />
+                  <h3 className="text-sm font-medium text-foreground mb-1">{item.label}</h3>
+                  <p className="text-xs text-muted-foreground">{item.description}</p>
+                </div>
               ))}
             </div>
           </div>
 
-          {/* Stats/Numbers with 3D Effect */}
+          {/* Stats/Numbers */}
           <div className="scroll-animate">
             <div className="grid grid-cols-2 gap-12">
-              {[
-                { value: "2+", label: "Years of Learning" },
-                { value: "5+", label: "Projects Built" },
-                { value: "10+", label: "Technologies" },
-                { value: "∞", label: "Curiosity" },
-              ].map((stat, index) => (
-                <TiltCard key={stat.label} maxTilt={8} glareEnabled>
-                  <div className="border-l-2 border-red pl-6 py-4 bg-gradient-to-br from-card/50 to-transparent backdrop-blur-sm">
-                    <p className="font-display text-6xl lg:text-7xl text-foreground">{stat.value}</p>
-                    <p className="text-sm text-muted-foreground mt-2 uppercase tracking-wider">{stat.label}</p>
-                  </div>
-                </TiltCard>
-              ))}
+              <div className="border-l-2 border-red pl-6">
+                <p className="font-display text-6xl lg:text-7xl text-foreground">2+</p>
+                <p className="text-sm text-muted-foreground mt-2 uppercase tracking-wider">Years of Learning</p>
+              </div>
+              <div className="border-l-2 border-red pl-6">
+                <p className="font-display text-6xl lg:text-7xl text-foreground">5+</p>
+                <p className="text-sm text-muted-foreground mt-2 uppercase tracking-wider">Projects Built</p>
+              </div>
+              <div className="border-l-2 border-red pl-6">
+                <p className="font-display text-6xl lg:text-7xl text-foreground">10+</p>
+                <p className="text-sm text-muted-foreground mt-2 uppercase tracking-wider">Technologies</p>
+              </div>
+              <div className="border-l-2 border-red pl-6">
+                <p className="font-display text-6xl lg:text-7xl text-foreground">∞</p>
+                <p className="text-sm text-muted-foreground mt-2 uppercase tracking-wider">Curiosity</p>
+              </div>
             </div>
           </div>
         </div>

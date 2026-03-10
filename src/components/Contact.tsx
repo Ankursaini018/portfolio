@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, Suspense } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Mail, Phone, MapPin, Github, Linkedin, Send, Loader2, CheckCircle, ArrowUpRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -7,8 +7,6 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
 import Marquee from "./Marquee";
-import FloatingShapes from "./3d/FloatingShapes";
-import TiltCard from "./3d/TiltCard";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -144,11 +142,6 @@ const Contact = () => {
 
   return (
     <section ref={sectionRef} id="contact" className="py-24 lg:py-32 bg-secondary relative overflow-hidden">
-      {/* 3D Background */}
-      <Suspense fallback={null}>
-        <FloatingShapes variant="contact" className="z-0 opacity-40" />
-      </Suspense>
-
       {/* Background Marquee */}
       <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full pointer-events-none opacity-30">
         <Marquee text="CONTACT" speed="slow" direction="right" />

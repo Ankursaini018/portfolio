@@ -1,7 +1,6 @@
 import { Calendar, MapPin } from "lucide-react";
-import { useEffect, useRef, Suspense } from "react";
+import { useEffect, useRef } from "react";
 import Marquee from "./Marquee";
-import TiltCard from "./3d/TiltCard";
 
 const Experience = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -63,41 +62,40 @@ const Experience = () => {
         
         <div className="max-w-4xl">
           {experiences.map((exp, index) => (
-            <TiltCard key={index} maxTilt={6} glareEnabled>
-              <div 
-                className="scroll-animate border border-border bg-card/90 backdrop-blur-sm p-8 lg:p-12 hover-lift hover:border-red transition-all duration-500"
-                style={{ transitionDelay: `${index * 150}ms` }}
-              >
-                <div className="grid lg:grid-cols-12 gap-8">
-                  {/* Left Column - Meta */}
-                  <div className="lg:col-span-4 space-y-4">
-                    <div className="flex items-center gap-3 text-muted-foreground">
-                      <Calendar className="w-4 h-4 text-red" />
-                      <span className="text-sm">{exp.period}</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-muted-foreground">
-                      <MapPin className="w-4 h-4 text-red" />
-                      <span className="text-sm">{exp.location}</span>
-                    </div>
+            <div 
+              key={index}
+              className="scroll-animate border border-border bg-card p-8 lg:p-12 hover-lift hover:border-red transition-all duration-500"
+              style={{ transitionDelay: `${index * 150}ms` }}
+            >
+              <div className="grid lg:grid-cols-12 gap-8">
+                {/* Left Column - Meta */}
+                <div className="lg:col-span-4 space-y-4">
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <Calendar className="w-4 h-4 text-red" />
+                    <span className="text-sm">{exp.period}</span>
                   </div>
-
-                  {/* Right Column - Content */}
-                  <div className="lg:col-span-8">
-                    <h3 className="font-display text-3xl text-foreground mb-2">{exp.title}</h3>
-                    <p className="text-red text-lg mb-8">{exp.company}</p>
-                    
-                    <ul className="space-y-4">
-                      {exp.responsibilities.map((resp, respIndex) => (
-                        <li key={respIndex} className="flex items-start gap-4 text-muted-foreground">
-                          <span className="w-1.5 h-1.5 rounded-full bg-red mt-2 flex-shrink-0" />
-                          <span className="text-base">{resp}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <MapPin className="w-4 h-4 text-red" />
+                    <span className="text-sm">{exp.location}</span>
                   </div>
                 </div>
+
+                {/* Right Column - Content */}
+                <div className="lg:col-span-8">
+                  <h3 className="font-display text-3xl text-foreground mb-2">{exp.title}</h3>
+                  <p className="text-red text-lg mb-8">{exp.company}</p>
+                  
+                  <ul className="space-y-4">
+                    {exp.responsibilities.map((resp, respIndex) => (
+                      <li key={respIndex} className="flex items-start gap-4 text-muted-foreground">
+                        <span className="w-1.5 h-1.5 rounded-full bg-red mt-2 flex-shrink-0" />
+                        <span className="text-base">{resp}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </TiltCard>
+            </div>
           ))}
         </div>
       </div>
