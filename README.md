@@ -1,73 +1,98 @@
-# Welcome to your Lovable project
+# 🚀 Ankur Saini – Portfolio
 
-## Project info
+Welcome to my personal portfolio website showcasing my work in **AI, Machine Learning, and Data Science**.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+🔗 Live Portfolio: https://ankursaini.lovable.app
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 👨‍💻 About Me
 
-**Use Lovable**
+I am an **AI/ML Engineer and Data Science enthusiast** with hands-on experience in Python and building real-world AI applications.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+I enjoy solving problems using **data, machine learning, and intelligent systems**, and continuously explore new technologies to build impactful solutions.
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## 🏠 Portfolio Preview
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 🧑‍💼 Hero Section
+<img width="1892" height="914" alt="Screenshot 2026-03-21 155312" src="https://github.com/user-attachments/assets/90e0384c-c240-450e-b439-1cde931f86e4" />
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 📖 About Section
+<img width="878" height="776" alt="Screenshot 2026-03-21 155343" src="https://github.com/user-attachments/assets/7cc63d41-b9e0-4e0d-a311-65a402c9186b" />
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+### 🛠️ Skills & Tools
+<img width="1034" height="492" alt="Screenshot 2026-03-21 155406" src="https://github.com/user-attachments/assets/4bafdd0b-5895-4dfc-81e5-d985d671815b" />
 
-**Edit a file directly in GitHub**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+### 💼 Experience
+<img width="752" height="517" alt="Screenshot 2026-03-21 155419" src="https://github.com/user-attachments/assets/b6786396-8d09-4577-90ba-adca447c8250" />
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+### 🚀 Projects
+<img width="975" height="842" alt="Screenshot 2026-03-21 155434" src="https://github.com/user-attachments/assets/f0127557-07b2-414e-adb4-e0c2961f0401" />
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+### 🎓 Education
+<img width="975" height="577" alt="Screenshot 2026-03-21 155446" src="https://github.com/user-attachments/assets/c9266c91-a2fa-471f-ab75-5215cfae5062" />
 
-## Can I connect a custom domain to my Lovable project?
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### 📬 Contact Section
+<img width="1022" height="658" alt="Screenshot 2026-03-21 155504" src="https://github.com/user-attachments/assets/6e4089cf-2353-4bb2-964d-976cdbd01edf" />
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+---
+
+## 💡 Featured Project
+
+### 🤖 AI Document Assistant (RAG System)
+
+An AI-powered document question-answering system built using **Retrieval-Augmented Generation (RAG)**.
+
+#### 🔥 Key Features:
+- Upload and analyze documents (PDF)  
+- Ask questions in natural language  
+- AI-generated answers with source citations  
+- Multi-document search  
+- Vector-based semantic retrieval  
+
+🔗 Live Demo: https://ragsystem.lovable.app
+
+---
+
+## 🛠️ Tech Stack
+
+**Languages & Tools:**  
+Python, SQL, NumPy, Pandas, Matplotlib, Seaborn, Scikit-Learn, Flask  
+
+**AI/ML:**  
+Machine Learning, Deep Learning, Generative AI  
+
+---
+
+## 🎯 Goals
+
+- Build scalable AI applications  
+- Explore advanced LLM & RAG systems  
+- Contribute to real-world AI solutions  
+
+---
+
+## ⭐ Support
+
+If you like my work, consider giving this repo a ⭐ and connecting with me!
