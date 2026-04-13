@@ -1,4 +1,5 @@
 import { ArrowUp, Github, Linkedin, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -71,9 +72,12 @@ const Footer = () => {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Ankur Saini. All rights reserved.
           </p>
-          <p className="text-sm text-muted-foreground">
-            Built with passion & AI
-          </p>
+          <Link
+            to="/admin"
+            className="text-sm text-muted-foreground/30 hover:text-muted-foreground transition-colors"
+          >
+            ·
+          </Link>
         </div>
       </div>
     </footer>
