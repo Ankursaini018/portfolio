@@ -42,16 +42,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <a 
-            href="#" 
-            className="font-display text-3xl text-foreground hover:text-red transition-colors"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-          >
-            AS.
-          </a>
+          <div />
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
