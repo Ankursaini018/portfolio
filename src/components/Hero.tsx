@@ -151,7 +151,7 @@ const Hero = () => {
           {/* Floating text on image */}
           <div className="absolute bottom-8 right-8 hidden lg:block">
             <p 
-              className={`text-sm text-foreground/80 uppercase tracking-[0.3em] ${
+              className={`text-sm text-black uppercase tracking-[0.3em] ${
                 isLoaded ? "animate-fade-slide-up" : ""
               }`}
               style={{ animationDelay: "1.5s" }}
@@ -162,7 +162,7 @@ const Hero = () => {
 
           {/* Decorative corner */}
           <div 
-            className={`absolute top-8 right-8 w-16 h-16 border border-foreground/20 hidden lg:block ${
+            className={`absolute top-8 right-8 w-16 h-16 border border-black/40 hidden lg:block ${
               isLoaded ? "animate-scale-in" : ""
             }`}
             style={{ animationDelay: "1.2s" }}
