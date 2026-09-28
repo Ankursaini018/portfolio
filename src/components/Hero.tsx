@@ -1,182 +1,69 @@
-import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 import profilePicture from "@/assets/profile-picture.jpg";
+import { Button } from "./ui/button";
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+  useEffect(() => setIsLoaded(true), []);
 
-  const handleScrollDown = () => {
-    const aboutSection = document.querySelector("#about");
-    aboutSection?.scrollIntoView({ behavior: "smooth" });
-  };
+  const goToProjects = () => document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section className="min-h-screen w-full bg-background relative overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
-        {/* Left Side - Content */}
-        <div className="relative z-10 flex flex-col justify-between px-6 md:px-12 lg:px-16 py-8 order-2 lg:order-1">
-          {/* Top Bar */}
-          <div className="flex justify-between items-start">
-            <div className={`overflow-hidden ${isLoaded ? "animate-fade-slide-up" : ""}`}>
-              <p className="text-sm text-muted-foreground uppercase tracking-[0.3em]">
-                Portfolio 2025
-              </p>
-            </div>
-            <div className={`overflow-hidden lg:hidden ${isLoaded ? "animate-fade-slide-up delay-200" : ""}`}>
-              <p className="text-sm text-muted-foreground">
-                AI/ML Engineer
-              </p>
-            </div>
+    <section className="relative min-h-screen overflow-hidden bg-background px-6 pb-20 pt-28 md:px-10 lg:px-16 lg:pb-28 lg:pt-36">
+      <div className="mx-auto grid w-full max-w-7xl items-end gap-14 lg:grid-cols-12 lg:gap-16">
+        <div className="lg:col-span-7">
+          <div className={`mb-8 flex items-center gap-3 ${isLoaded ? "animate-fade-slide-up" : "opacity-0"}`}>
+            <span className="h-px w-8 bg-border" />
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">AI / ML Engineer & Data Scientist</span>
+          </div>
+          <div className="overflow-hidden">
+            <h1 className={`font-display text-[4.8rem] leading-[0.82] text-foreground sm:text-8xl md:text-[9.5rem] ${isLoaded ? "animate-clip-reveal-up" : "opacity-0"}`}>
+              Building
+            </h1>
+          </div>
+          <div className="overflow-hidden">
+            <h1 className={`font-display text-[4.8rem] italic leading-[0.82] text-muted-foreground sm:text-8xl md:text-[9.5rem] ${isLoaded ? "animate-clip-reveal-up" : "opacity-0"}`} style={{ animationDelay: "0.15s" }}>
+              intelligent
+            </h1>
+          </div>
+          <div className="overflow-hidden">
+            <h1 className={`font-display text-[4.8rem] leading-[0.82] text-foreground sm:text-8xl md:text-[9.5rem] ${isLoaded ? "animate-clip-reveal-up" : "opacity-0"}`} style={{ animationDelay: "0.3s" }}>
+              systems.
+            </h1>
           </div>
 
-          {/* Center - Massive Text */}
-          <div className="flex-1 flex flex-col justify-center py-12">
-            {/* Name reveal */}
-            <div className="overflow-hidden mb-4">
-              <h1 
-                className={`font-display text-hero text-foreground leading-none ${
-                  isLoaded ? "animate-clip-reveal-up" : ""
-                }`}
-                style={{ animationDelay: "0.3s" }}
-              >
-                ANKUR
-              </h1>
-            </div>
-            <div className="overflow-hidden">
-              <h1 
-                className={`font-display text-hero text-foreground leading-none ${
-                  isLoaded ? "animate-clip-reveal-up" : ""
-                }`}
-                style={{ animationDelay: "0.5s" }}
-              >
-                SAINI
-              </h1>
-            </div>
-
-            {/* Subtitle */}
-            <div className="mt-8 md:mt-12 flex flex-col gap-4">
-              <div className="overflow-hidden">
-                <p 
-                  className={`text-xl md:text-2xl text-muted-foreground font-light ${
-                    isLoaded ? "animate-fade-slide-up" : ""
-                  }`}
-                  style={{ animationDelay: "0.8s" }}
-                >
-                  Crafting intelligent AI/ML solutions
-                </p>
-              </div>
-              <div className="overflow-hidden">
-                <p 
-                  className={`text-xl md:text-2xl text-foreground font-light ${
-                    isLoaded ? "animate-fade-slide-up" : ""
-                  }`}
-                  style={{ animationDelay: "1s" }}
-                >
-                  that push <span className="text-red">boundaries</span>
-                </p>
+          <div className={`mt-10 max-w-xl ${isLoaded ? "animate-fade-slide-up" : "opacity-0"}`} style={{ animationDelay: "0.65s" }}>
+            <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
+              I’m Ankur Saini, turning machine learning, data, and thoughtful engineering into useful digital products.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-6">
+              <Button onClick={goToProjects} className="h-12 rounded-full px-6 text-xs font-semibold uppercase tracking-widest">
+                View my work <ArrowDown className="ml-1" />
+              </Button>
+              <div className="flex items-center gap-4">
+                <a href="mailto:officialankur0707@gmail.com" aria-label="Email" className="social-icon"><Mail /></a>
+                <a href="https://github.com/Ankursaini018" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="social-icon"><Github /></a>
+                <a href="https://linkedin.com/in/ankur-saini-596173374" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="social-icon"><Linkedin /></a>
               </div>
             </div>
-          </div>
-
-          {/* Bottom Section */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
-            {/* Social Links */}
-            <div 
-              className={`flex gap-8 ${isLoaded ? "animate-fade-slide-up" : ""}`}
-              style={{ animationDelay: "1.2s" }}
-            >
-              <a
-                href="mailto:officialankur0707@gmail.com"
-                className="group flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300"
-              >
-                <Mail className="w-5 h-5" />
-                <span className="text-sm font-medium link-underline">Email</span>
-              </a>
-              <a
-                href="https://github.com/Ankursaini018"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300"
-              >
-                <Github className="w-5 h-5" />
-                <span className="text-sm font-medium link-underline">GitHub</span>
-              </a>
-              <a
-                href="https://linkedin.com/in/ankur-saini-596173374"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300"
-              >
-                <Linkedin className="w-5 h-5" />
-                <span className="text-sm font-medium link-underline">LinkedIn</span>
-              </a>
-            </div>
-
-            {/* Scroll Indicator */}
-            <button
-              onClick={handleScrollDown}
-              className={`group flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300 ${
-                isLoaded ? "animate-fade-slide-up" : ""
-              }`}
-              style={{ animationDelay: "1.4s" }}
-            >
-              <span className="text-sm uppercase tracking-widest">Scroll</span>
-              <ArrowDown className="w-4 h-4 animate-bounce" />
-            </button>
           </div>
         </div>
 
-        {/* Right Side - Profile Picture */}
-        <div className="relative min-h-[50vh] lg:min-h-screen order-1 lg:order-2 overflow-hidden group cursor-pointer">
-          {/* Image */}
-          <div 
-            className={`absolute inset-0 ${isLoaded ? "image-reveal" : ""}`}
-            style={{ animationDelay: "0.2s" }}
-          >
-            <img
-              src={profilePicture}
-              alt="Ankur Saini"
-              className={`w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-110 ${
-                isLoaded ? "scale-100" : "scale-110"
-              }`}
-            />
-            {/* Overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent lg:bg-gradient-to-r lg:from-background lg:via-transparent lg:to-transparent" />
+        <div className={`relative lg:col-span-5 ${isLoaded ? "animate-scale-in" : "opacity-0"}`} style={{ animationDelay: "0.35s" }}>
+          <div className="group relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-muted">
+            <img src={profilePicture} alt="Ankur Saini" className="h-full w-full object-cover object-center grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0" />
+            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-foreground/80 to-transparent p-6 pt-24 text-background">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em]">Pilani, India</p>
+              <p className="font-display text-3xl italic">Hello.</p>
+            </div>
           </div>
-
-          {/* Floating text on image */}
-          <div className="absolute bottom-8 right-8 hidden lg:block">
-            <p 
-              className={`text-sm text-black uppercase tracking-[0.3em] ${
-                isLoaded ? "animate-fade-slide-up" : ""
-              }`}
-              style={{ animationDelay: "1.5s" }}
-            >
-              AI/ML Engineer
-            </p>
+          <div className="absolute -bottom-5 -right-3 flex h-24 w-24 rotate-6 items-center justify-center rounded-full bg-primary text-center text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-elegant md:-right-6 md:h-28 md:w-28">
+            Open to<br />work
           </div>
-
-          {/* Decorative corner */}
-          <div 
-            className={`absolute top-8 right-8 w-16 h-16 border border-black/40 hidden lg:block ${
-              isLoaded ? "animate-scale-in" : ""
-            }`}
-            style={{ animationDelay: "1.2s" }}
-          />
         </div>
       </div>
-
-      {/* Bottom Line */}
-      <div 
-        className={`absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent ${
-          isLoaded ? "animate-line-draw" : ""
-        }`}
-        style={{ animationDelay: "1.5s" }}
-      />
     </section>
   );
 };
