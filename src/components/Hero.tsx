@@ -11,7 +11,7 @@ const Hero = () => {
   const goToProjects = () => document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-background px-6 pb-20 pt-28 md:px-10 lg:px-16 lg:pb-28 lg:pt-36">
+    <section className="relative overflow-hidden bg-background px-6 pb-24 pt-28 md:px-10 lg:min-h-[760px] lg:px-16 lg:pb-28 lg:pt-36">
       <div className="mx-auto grid w-full max-w-7xl items-end gap-14 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-7">
           <div className={`mb-8 flex items-center gap-3 ${isLoaded ? "animate-fade-slide-up" : "opacity-0"}`}>
