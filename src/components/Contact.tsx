@@ -141,18 +141,18 @@ const Contact = () => {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="py-24 lg:py-32 bg-secondary relative overflow-hidden">
+    <section ref={sectionRef} id="contact" className="py-20 lg:py-28 bg-secondary relative overflow-hidden">
       {/* Background Marquee */}
       <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full pointer-events-none opacity-30">
         <Marquee text="CONTACT" speed="slow" direction="right" />
       </div>
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="mb-16 lg:mb-24">
+      <div className="container mx-auto px-6 md:px-10 lg:px-16 relative z-10">
+        <div className="mb-14 lg:mb-20">
           <p className="text-sm text-muted-foreground mb-4 scroll-animate uppercase tracking-[0.3em]">
             06 — Get In Touch
           </p>
-          <h2 className="font-display text-display-xl text-foreground scroll-animate">
+          <h2 className="font-display text-display-xl italic text-foreground scroll-animate">
             LET'S CONNECT
           </h2>
           <p className="text-muted-foreground mt-6 max-w-lg scroll-animate text-lg">
@@ -164,15 +164,15 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="scroll-animate">
             <h3 className="text-sm font-medium text-foreground uppercase tracking-widest mb-8 flex items-center gap-3">
-              <div className="w-8 h-8 border border-red flex items-center justify-center">
-                <Send className="w-4 h-4 text-red" />
+              <div className="w-8 h-8 border border-primary flex items-center justify-center">
+                <Send className="w-4 h-4 text-primary" />
               </div>
               Send a Message
             </h3>
 
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center py-16 text-center border border-border bg-card p-8">
-                <CheckCircle className="w-12 h-12 text-red mb-6" />
+                <CheckCircle className="w-12 h-12 text-primary mb-6" />
                 <h4 className="text-xl font-medium text-foreground mb-2">Message Sent!</h4>
                 <p className="text-muted-foreground">Thank you for reaching out. I'll respond as soon as possible.</p>
               </div>
@@ -184,7 +184,7 @@ const Contact = () => {
                     placeholder="Your Name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className={`bg-transparent border-0 border-b-2 border-border rounded-none px-0 py-4 focus:border-red focus-visible:ring-0 text-foreground placeholder:text-muted-foreground text-lg ${errors.name ? "border-destructive" : ""}`}
+                    className={`bg-transparent border-0 border-b border-border rounded-none px-0 py-4 focus:border-primary focus-visible:ring-0 text-foreground placeholder:text-muted-foreground text-lg ${errors.name ? "border-destructive" : ""}`}
                     disabled={isSubmitting}
                   />
                   {errors.name && <p className="text-destructive text-xs mt-2">{errors.name}</p>}
@@ -197,7 +197,7 @@ const Contact = () => {
                     placeholder="Your Email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className={`bg-transparent border-0 border-b-2 border-border rounded-none px-0 py-4 focus:border-red focus-visible:ring-0 text-foreground placeholder:text-muted-foreground text-lg ${errors.email ? "border-destructive" : ""}`}
+                    className={`bg-transparent border-0 border-b border-border rounded-none px-0 py-4 focus:border-primary focus-visible:ring-0 text-foreground placeholder:text-muted-foreground text-lg ${errors.email ? "border-destructive" : ""}`}
                     disabled={isSubmitting}
                   />
                   {errors.email && <p className="text-destructive text-xs mt-2">{errors.email}</p>}
@@ -209,7 +209,7 @@ const Contact = () => {
                     placeholder="Subject (Optional)"
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="bg-transparent border-0 border-b-2 border-border rounded-none px-0 py-4 focus:border-red focus-visible:ring-0 text-foreground placeholder:text-muted-foreground text-lg"
+                    className="bg-transparent border-0 border-b border-border rounded-none px-0 py-4 focus:border-primary focus-visible:ring-0 text-foreground placeholder:text-muted-foreground text-lg"
                     disabled={isSubmitting}
                   />
                 </div>
@@ -220,7 +220,7 @@ const Contact = () => {
                     placeholder="Your Message"
                     value={formData.message}
                     onChange={handleInputChange}
-                    className={`bg-transparent border-0 border-b-2 border-border rounded-none px-0 py-4 focus:border-red focus-visible:ring-0 min-h-[150px] resize-none text-foreground placeholder:text-muted-foreground text-lg ${errors.message ? "border-destructive" : ""}`}
+                    className={`bg-transparent border-0 border-b border-border rounded-none px-0 py-4 focus:border-primary focus-visible:ring-0 min-h-[150px] resize-none text-foreground placeholder:text-muted-foreground text-lg ${errors.message ? "border-destructive" : ""}`}
                     disabled={isSubmitting}
                   />
                   {errors.message && <p className="text-destructive text-xs mt-2">{errors.message}</p>}
@@ -228,7 +228,7 @@ const Contact = () => {
 
                 <Button
                   type="submit"
-                  className="w-full bg-red text-foreground hover:bg-red/90 rounded-none font-medium py-6 text-lg group"
+                  className="w-full rounded-full bg-primary py-6 text-lg font-medium text-primary-foreground hover:bg-primary/90 group"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -258,12 +258,12 @@ const Contact = () => {
                     href={info.href || undefined}
                     className={`flex items-start gap-4 group ${info.href ? "cursor-pointer" : "cursor-default"}`}
                   >
-                    <div className="w-10 h-10 border border-border flex items-center justify-center group-hover:border-red transition-colors">
-                      <info.icon className="w-5 h-5 text-red" />
+                    <div className="w-10 h-10 border border-border flex items-center justify-center group-hover:border-primary transition-colors">
+                      <info.icon className="w-5 h-5 text-primary" />
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground uppercase tracking-widest">{info.label}</p>
-                      <p className="text-foreground text-lg group-hover:text-red transition-colors">{info.value}</p>
+                      <p className="text-foreground text-lg group-hover:text-primary transition-colors">{info.value}</p>
                     </div>
                   </a>
                 ))}
@@ -279,9 +279,9 @@ const Contact = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-muted-foreground hover:text-red transition-colors group"
+                    className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
                   >
-                    <div className="w-10 h-10 border border-border flex items-center justify-center group-hover:border-red group-hover:bg-red transition-all">
+                    <div className="w-10 h-10 border border-border flex items-center justify-center group-hover:border-primary group-hover:bg-primary transition-all">
                       <social.icon className="w-5 h-5 group-hover:text-foreground" />
                     </div>
                     <span className="link-underline">{social.label}</span>
