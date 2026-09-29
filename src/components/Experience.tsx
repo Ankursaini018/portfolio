@@ -44,18 +44,18 @@ const Experience = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="experience" className="py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section ref={sectionRef} id="experience" className="py-20 lg:py-28 bg-background relative overflow-hidden">
       {/* Background Marquee */}
       <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full pointer-events-none opacity-30">
         <Marquee text="EXPERIENCE" speed="slow" />
       </div>
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="mb-16 lg:mb-24">
+      <div className="container mx-auto px-6 md:px-10 lg:px-16 relative z-10">
+        <div className="mb-14 lg:mb-20">
           <p className="text-sm text-muted-foreground mb-4 scroll-animate uppercase tracking-[0.3em]">
             03 — Career
           </p>
-          <h2 className="font-display text-display-xl text-foreground scroll-animate">
+          <h2 className="font-display text-display-xl italic text-foreground scroll-animate">
             EXPERIENCE
           </h2>
         </div>
@@ -64,18 +64,18 @@ const Experience = () => {
           {experiences.map((exp, index) => (
             <div 
               key={index}
-              className="scroll-animate border border-border bg-card p-8 lg:p-12 hover-lift hover:border-red transition-all duration-500"
+              className="scroll-animate border border-border bg-card p-8 lg:p-12 hover-lift hover:border-primary transition-all duration-500"
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               <div className="grid lg:grid-cols-12 gap-8">
                 {/* Left Column - Meta */}
                 <div className="lg:col-span-4 space-y-4">
                   <div className="flex items-center gap-3 text-muted-foreground">
-                    <Calendar className="w-4 h-4 text-red" />
+                    <Calendar className="w-4 h-4 text-primary" />
                     <span className="text-sm">{exp.period}</span>
                   </div>
                   <div className="flex items-center gap-3 text-muted-foreground">
-                    <MapPin className="w-4 h-4 text-red" />
+                    <MapPin className="w-4 h-4 text-primary" />
                     <span className="text-sm">{exp.location}</span>
                   </div>
                 </div>
@@ -83,12 +83,12 @@ const Experience = () => {
                 {/* Right Column - Content */}
                 <div className="lg:col-span-8">
                   <h3 className="font-display text-3xl text-foreground mb-2">{exp.title}</h3>
-                  <p className="text-red text-lg mb-8">{exp.company}</p>
+                  <p className="text-primary text-lg mb-8">{exp.company}</p>
                   
                   <ul className="space-y-4">
                     {exp.responsibilities.map((resp, respIndex) => (
                       <li key={respIndex} className="flex items-start gap-4 text-muted-foreground">
-                        <span className="w-1.5 h-1.5 rounded-full bg-red mt-2 flex-shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
                         <span className="text-base">{resp}</span>
                       </li>
                     ))}

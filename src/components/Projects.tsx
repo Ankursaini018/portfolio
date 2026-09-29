@@ -1,4 +1,4 @@
-import { ArrowUpRight, ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import { useEffect, useRef } from "react";
 import Marquee from "./Marquee";
 
@@ -60,49 +60,49 @@ const Projects = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="projects" className="py-24 lg:py-32 bg-secondary relative overflow-hidden">
+    <section ref={sectionRef} id="projects" className="py-20 lg:py-28 bg-secondary relative overflow-hidden">
       {/* Background Marquee */}
       <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full pointer-events-none opacity-30">
         <Marquee text="PROJECTS" speed="slow" direction="right" />
       </div>
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="flex items-end justify-between mb-16 lg:mb-24">
+      <div className="container mx-auto px-6 md:px-10 lg:px-16 relative z-10">
+        <div className="flex items-end justify-between mb-14 lg:mb-20">
           <div>
             <p className="text-sm text-muted-foreground mb-4 scroll-animate uppercase tracking-[0.3em]">
               04 — Works
             </p>
-            <h2 className="font-display text-display-xl text-foreground scroll-animate">
+            <h2 className="font-display text-display-xl italic text-foreground scroll-animate">
               PROJECTS
             </h2>
           </div>
           <p className="text-sm text-muted-foreground scroll-animate uppercase tracking-widest">2025</p>
         </div>
         
-        <div className="space-y-6">
+        <div className="grid gap-8 md:grid-cols-2">
           {projects.map((project, index) => (
             <div 
               key={project.title}
-              className="scroll-animate group border border-border bg-card hover:border-red transition-all duration-500 hover-lift"
+              className={`scroll-animate group border-t border-border bg-transparent pt-6 transition-all duration-500 ${index === 0 ? "md:col-span-2" : ""}`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <div className="grid lg:grid-cols-11 gap-6 p-8 lg:p-10">
+              <div className="grid gap-7 lg:grid-cols-12">
                 {/* Number & Year */}
-                <div className="lg:col-span-2 flex lg:flex-col gap-4 lg:gap-2">
-                  <span className="text-red font-medium text-lg">{project.number}</span>
+                <div className="flex gap-4 lg:col-span-2 lg:flex-col lg:gap-2">
+                  <span className="text-primary font-medium text-lg">{project.number}</span>
                   <span className="text-muted-foreground text-sm">{project.year}</span>
                 </div>
 
                 {/* Title */}
                 <div className="lg:col-span-4">
-                  <h3 className="font-display text-3xl lg:text-4xl text-foreground group-hover:text-red transition-colors">
+                  <h3 className="font-display text-4xl italic text-foreground transition-colors group-hover:text-primary lg:text-5xl transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-sm text-muted-foreground mt-2">{project.subtitle}</p>
                 </div>
 
                 {/* Description */}
-                <div className="lg:col-span-5">
+                <div className="lg:col-span-6">
                   <p className="text-muted-foreground leading-relaxed text-base">
                     {project.description}
                   </p>
@@ -110,7 +110,7 @@ const Projects = () => {
                     {project.tags.map((tag) => (
                       <span 
                         key={tag}
-                        className="text-xs text-muted-foreground border border-border px-3 py-1.5 hover:border-red hover:text-red transition-colors"
+                        className="rounded-full border border-border px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:border-primary hover:text-primary"
                       >
                         {tag}
                       </span>
@@ -119,12 +119,12 @@ const Projects = () => {
                   {(project.liveDemo || project.github) && (
                     <div className="flex gap-4 mt-6">
                       {project.liveDemo && (
-                        <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-red hover:text-foreground transition-colors border border-red px-4 py-2 hover:bg-red">
+                        <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-primary px-4 py-2 text-sm text-primary transition-colors hover:bg-primary hover:text-primary-foreground">
                           <ExternalLink className="w-4 h-4" /> Live Demo
                         </a>
                       )}
                       {project.github && (
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors border border-border px-4 py-2 hover:border-red">
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm text-muted-foreground transition-colors hover:border-primary hover:text-primary">
                           <Github className="w-4 h-4" /> GitHub
                         </a>
                       )}

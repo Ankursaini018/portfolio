@@ -56,32 +56,32 @@ const Education = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="education" className="py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section ref={sectionRef} id="education" className="py-20 lg:py-28 bg-background relative overflow-hidden">
       {/* Background Marquee */}
       <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full pointer-events-none opacity-30">
         <Marquee text="EDUCATION" speed="slow" />
       </div>
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="mb-16 lg:mb-24">
+      <div className="container mx-auto px-6 md:px-10 lg:px-16 relative z-10">
+        <div className="mb-14 lg:mb-20">
           <p className="text-sm text-muted-foreground mb-4 scroll-animate uppercase tracking-[0.3em]">
             05 — Academic
           </p>
-          <h2 className="font-display text-display-xl text-foreground scroll-animate">
+          <h2 className="font-display text-display-xl italic text-foreground scroll-animate">
             EDUCATION
           </h2>
         </div>
         
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Main Education */}
-          <div className="scroll-animate border border-border bg-card p-8 lg:p-12 hover-lift hover:border-red transition-all duration-500">
+          <div className="scroll-animate border border-border bg-card p-8 lg:p-12 hover-lift hover:border-primary transition-all duration-500">
             <div className="flex items-start gap-4 mb-8">
-              <div className="w-12 h-12 border border-red flex items-center justify-center">
-                <GraduationCap className="w-6 h-6 text-red" />
+              <div className="w-12 h-12 border border-primary flex items-center justify-center">
+                <GraduationCap className="w-6 h-6 text-primary" />
               </div>
               <div>
                 <h3 className="font-display text-2xl text-foreground">{education.degree}</h3>
-                <p className="text-red text-lg">{education.field}</p>
+                <p className="text-primary text-lg">{education.field}</p>
               </div>
             </div>
             
@@ -98,7 +98,7 @@ const Education = () => {
                 {education.activities.map((activity) => (
                   <span 
                     key={activity}
-                    className="text-sm text-muted-foreground border border-border px-4 py-2 hover:border-red hover:text-red transition-all duration-300"
+                    className="text-sm text-muted-foreground border border-border px-4 py-2 hover:border-primary hover:text-primary transition-all duration-300"
                   >
                     {activity}
                   </span>
@@ -108,10 +108,10 @@ const Education = () => {
           </div>
           
           {/* Courses & Certifications */}
-          <div className="scroll-animate border border-border bg-card p-8 lg:p-12 hover-lift hover:border-red transition-all duration-500">
+          <div className="scroll-animate border border-border bg-card p-8 lg:p-12 hover-lift hover:border-primary transition-all duration-500">
             <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 border border-red flex items-center justify-center">
-                <Award className="w-6 h-6 text-red" />
+              <div className="w-12 h-12 border border-primary flex items-center justify-center">
+                <Award className="w-6 h-6 text-primary" />
               </div>
               <h3 className="font-display text-2xl text-foreground">COURSES & TRAINING</h3>
             </div>
@@ -120,9 +120,9 @@ const Education = () => {
               {courses.map((course, index) => (
                 <div 
                   key={course.title}
-                  className="group border-l-2 border-border hover:border-red pl-6 transition-all duration-300"
+                  className="group border-l-2 border-border hover:border-primary pl-6 transition-all duration-300"
                 >
-                  <h4 className="font-medium text-foreground text-lg group-hover:text-red transition-colors">{course.title}</h4>
+                  <h4 className="font-medium text-foreground text-lg group-hover:text-primary transition-colors">{course.title}</h4>
                   <p className="text-sm text-muted-foreground mt-2">{course.institution}</p>
                   <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">{course.period}</p>
                 </div>

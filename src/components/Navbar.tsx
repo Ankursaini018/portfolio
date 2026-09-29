@@ -36,16 +36,16 @@ const Navbar = () => {
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? "bg-background/95 backdrop-blur-md border-b border-border" 
+          ? "bg-background/90 backdrop-blur-xl border-b border-border" 
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          <div />
+      <div className="container mx-auto px-6 md:px-10 lg:px-16">
+        <div className="flex items-center justify-between h-20">
+          <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="font-display text-2xl italic text-foreground">Ankur Saini<span className="text-primary">.</span></button>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <button
                 key={link.href}
@@ -60,7 +60,7 @@ const Navbar = () => {
                 variant="outline"
                 size="sm"
                 onClick={() => navigate('/admin')}
-                className="border-red text-red hover:bg-red hover:text-foreground rounded-none text-xs uppercase tracking-wider"
+                className="border-primary text-primary hover:bg-primary hover:text-foreground rounded-lg text-xs uppercase tracking-wider"
               >
                 <Shield className="w-3 h-3 mr-1" />
                 Admin
@@ -70,7 +70,7 @@ const Navbar = () => {
           
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground hover:text-red transition-colors"
+            className="md:hidden text-foreground hover:text-primary transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -80,12 +80,12 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="md:hidden fixed inset-0 top-16 bg-background z-50 animate-fade-in">
-            <div className="flex flex-col items-center justify-center h-full gap-8">
+            <div className="flex flex-col items-center justify-center h-full gap-10">
               {navLinks.map((link, index) => (
                 <button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className="font-display text-4xl text-foreground hover:text-red transition-colors animate-fade-slide-up"
+                  className="font-display text-4xl text-foreground hover:text-primary transition-colors animate-fade-slide-up"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   {link.label.toUpperCase()}
@@ -99,7 +99,7 @@ const Navbar = () => {
                     navigate('/admin');
                     setIsMobileMenuOpen(false);
                   }}
-                  className="border-red text-red hover:bg-red hover:text-foreground rounded-none animate-fade-slide-up"
+                  className="border-primary text-primary hover:bg-primary hover:text-foreground rounded-lg animate-fade-slide-up"
                   style={{ animationDelay: `${navLinks.length * 100}ms` }}
                 >
                   <Shield className="w-4 h-4 mr-2" />

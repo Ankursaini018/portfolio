@@ -14,7 +14,7 @@ const Footer = () => {
 
   return (
     <footer className="py-16 lg:py-24 bg-background border-t border-border">
-      <div className="container mx-auto px-6 lg:px-12">
+      <div className="container mx-auto px-6 md:px-10 lg:px-16">
         {/* Large Name */}
         <div className="mb-16">
           <h2 className="font-display text-display-xxl text-foreground/10">
@@ -28,9 +28,9 @@ const Footer = () => {
             <a 
               href="#" 
               onClick={(e) => { e.preventDefault(); scrollToTop(); }}
-              className="font-display text-5xl text-foreground hover:text-red transition-colors"
+              className="font-display text-4xl italic text-foreground hover:text-primary transition-colors"
             >
-              AS.
+              Ankur Saini.
             </a>
             <p className="text-muted-foreground mt-4 text-sm">
               AI/ML Engineer & Developer
@@ -45,7 +45,7 @@ const Footer = () => {
                 href={social.href}
                 target={social.href.startsWith("mailto") ? undefined : "_blank"}
                 rel={social.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-                className="w-12 h-12 border border-border flex items-center justify-center text-muted-foreground hover:text-red hover:border-red transition-all"
+                className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all"
                 aria-label={social.label}
               >
                 <social.icon className="w-5 h-5" />
@@ -57,10 +57,10 @@ const Footer = () => {
           <div className="flex lg:justify-end">
             <button
               onClick={scrollToTop}
-              className="group flex items-center gap-3 text-muted-foreground hover:text-red transition-colors text-sm uppercase tracking-widest"
+              className="group flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors text-sm uppercase tracking-widest"
             >
               Back to top
-              <div className="w-10 h-10 border border-border flex items-center justify-center group-hover:border-red group-hover:bg-red transition-all">
+              <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:border-primary group-hover:bg-primary transition-all">
                 <ArrowUp className="w-4 h-4 group-hover:text-foreground transition-transform group-hover:-translate-y-1" />
               </div>
             </button>
