@@ -1,102 +1,12 @@
-import { useEffect, useRef } from "react";
-import Marquee from "./Marquee";
-
-const Skills = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.querySelectorAll('.scroll-animate').forEach((el, index) => {
-              setTimeout(() => {
-                el.classList.add('in-view');
-              }, index * 80);
-            });
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const skillCategories = [
-    {
-      title: "Programming",
-      number: "01",
-      skills: ["Python", "SQL", "C++", "Flask"],
-    },
-    {
-      title: "Data Science",
-      number: "02",
-      skills: ["NumPy", "Pandas", "Matplotlib", "Seaborn"],
-    },
-    {
-      title: "Machine Learning",
-      number: "03",
-      skills: ["Scikit-learn", "Deep Learning", "Neural Networks", "Model Training"],
-    },
-    {
-      title: "Soft Skills",
-      number: "04",
-      skills: ["Problem-Solving", "Team Collaboration", "Data Visualization", "Communication"],
-    },
-  ];
-
-  return (
-    <section ref={sectionRef} id="skills" className="py-20 lg:py-28 bg-secondary relative overflow-hidden">
-      {/* Background Marquee */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full pointer-events-none opacity-30">
-        <Marquee text="SKILLS" speed="slow" direction="right" />
-      </div>
-
-      <div className="container mx-auto px-6 md:px-10 lg:px-16 relative z-10">
-        <div className="mb-14 lg:mb-20">
-          <p className="text-sm text-muted-foreground mb-4 scroll-animate uppercase tracking-[0.3em]">
-            02 — Expertise
-          </p>
-          <h2 className="font-display text-display-xl italic text-foreground scroll-animate">
-            SKILLS & TOOLS
-          </h2>
-        </div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {skillCategories.map((category, categoryIndex) => (
-            <div 
-              key={category.title}
-              className="scroll-animate bg-card p-8 group hover-lift border border-border hover:border-primary transition-all duration-500"
-              style={{ transitionDelay: `${categoryIndex * 100}ms` }}
-            >
-              <div className="flex items-center justify-between mb-8">
-                <span className="text-primary text-sm font-medium">{category.number}</span>
-              </div>
-              <h3 className="font-display text-3xl text-foreground mb-8 group-hover:text-primary transition-colors">
-                {category.title.toUpperCase()}
-              </h3>
-              <div className="space-y-4">
-                {category.skills.map((skill) => (
-                  <p 
-                    key={skill}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-default flex items-center gap-3"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    {skill}
-                  </p>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
+const categories = [
+  { title: "Programming", items: ["Python", "SQL", "C++", "Flask"] },
+  { title: "Data Science", items: ["NumPy", "Pandas", "Matplotlib", "Seaborn"] },
+  { title: "Machine Learning", items: ["Scikit-learn", "Deep Learning", "Neural Networks", "Model Training"] },
+  { title: "Soft Skills", items: ["Problem-Solving", "Team Collaboration", "Data Visualization", "Communication"] },
+];
+const Skills = () => <section id="skills" className="diroz-section diroz-skills"><div className="diroz-shell">
+  <div className="section-heading"><span className="section-index">/ 02 — EXPERTISE</span><span>THE TOOLKIT</span></div>
+  <h2 className="section-display">SKILLS <span>& TOOLS</span></h2>
+  <div className="skills-list">{categories.map((category, i) => <div key={category.title} className="skill-row"><span className="row-number">0{i + 1}</span><h3>{category.title}</h3><div className="skill-tags">{category.items.map(item => <span key={item}>{item}</span>)}</div></div>)}</div>
+</div></section>;
 export default Skills;
