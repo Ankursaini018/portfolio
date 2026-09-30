@@ -1,117 +1,52 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Shield, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, Shield, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { useAuth } from "@/hooks/useAuth";
 
+const links = [
+  { href: "#about", label: "About" },
+  { href: "#skills", label: "Skills" },
+  { href: "#experience", label: "Experience" },
+  { href: "#projects", label: "Projects" },
+  { href: "#education", label: "Education" },
+  { href: "#contact", label: "Contact" },
+];
+
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { isAdmin } = useAuth();
   const navigate = useNavigate();
-
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const update = () => setScrolled(window.scrollY > 30);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
   }, []);
-
-  const navLinks = [
-    { href: "#about", label: "About" },
-    { href: "#skills", label: "Skills" },
-    { href: "#experience", label: "Experience" },
-    { href: "#projects", label: "Projects" },
-    { href: "#contact", label: "Contact" },
-  ];
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: "smooth" });
-    setIsMobileMenuOpen(false);
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+  const jump = (href: string) => {
+    setOpen(false);
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
-
   return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled 
-          ? "bg-background/90 backdrop-blur-xl border-b border-border" 
-          : "bg-transparent"
-      }`}
-    >
-      <div className="container mx-auto px-6 md:px-10 lg:px-16">
-        <div className="flex items-center justify-between h-20">
-          <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="font-display text-2xl italic text-foreground">Ankur Saini<span className="text-primary">.</span></button>
-          
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors link-underline uppercase tracking-wider"
-              >
-                {link.label}
-              </button>
-            ))}
-            {isAdmin && (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => navigate('/admin')}
-                className="border-primary text-primary hover:bg-primary hover:text-foreground rounded-lg text-xs uppercase tracking-wider"
-              >
-                <Shield className="w-3 h-3 mr-1" />
-                Admin
-              </Button>
-            )}
-          </div>
-          
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-foreground hover:text-primary transition-colors"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-        
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden fixed inset-0 top-16 bg-background z-50 animate-fade-in">
-            <div className="flex flex-col items-center justify-center h-full gap-10">
-              {navLinks.map((link, index) => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className="font-display text-4xl text-foreground hover:text-primary transition-colors animate-fade-slide-up"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  {link.label.toUpperCase()}
-                </button>
-              ))}
-              {isAdmin && (
-                <Button
-                  variant="outline"
-                  size="lg"
-                  onClick={() => {
-                    navigate('/admin');
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="border-primary text-primary hover:bg-primary hover:text-foreground rounded-lg animate-fade-slide-up"
-                  style={{ animationDelay: `${navLinks.length * 100}ms` }}
-                >
-                  <Shield className="w-4 h-4 mr-2" />
-                  Admin
-                </Button>
-              )}
-            </div>
-          </div>
-        )}
+    <nav className={`diroz-nav ${scrolled ? "is-scrolled" : ""}`} aria-label="Main navigation">
+      <div className="nav-left">
+        <a className="nav-brand" href="#top" onClick={(e) => { e.preventDefault(); setOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}>Ankur<span>®</span></a>
+        <span className="nav-divider" />
+        <Button variant="ghost" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={open ? "Close menu" : "Open menu"} className="nav-menu-button">{open ? <X /> : <Menu />} <span>{open ? "Close" : "Menu"}</span></Button>
       </div>
+      <Button asChild className="nav-contact"><a href="#contact" onClick={(e) => { e.preventDefault(); jump("#contact"); }}>Contact Me <ArrowUpRight /></a></Button>
+      {open && <div className="nav-panel">
+        <p className="nav-panel-caption">EXPLORE / ANKUR SAINI</p>
+        <div className="nav-panel-links">{links.map((link, index) => <Button key={link.href} variant="ghost" onClick={() => jump(link.href)}><small>0{index + 1}</small>{link.label}<ArrowUpRight /></Button>)}
+        {isAdmin && <Button variant="ghost" onClick={() => { setOpen(false); navigate("/admin"); }}><small>07</small>Admin<Shield /></Button>}</div>
+        <p className="nav-panel-footer">AI / ML ENGINEER · PILANI, INDIA</p>
+      </div>}
     </nav>
   );
 };
-
 export default Navbar;
