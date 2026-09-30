@@ -4,29 +4,34 @@
 
 @layer base {
   :root {
-    --background: 48 20% 97%;
-    --foreground: 240 6% 10%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 6% 10%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 6% 10%;
-    --primary: 2 79% 53%;
+    --background: 230 55% 7%;
+    --foreground: 0 0% 98%;
+    --card: 230 42% 11%;
+    --card-foreground: 0 0% 98%;
+    --popover: 230 42% 11%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 16 100% 50%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 42 16% 92%;
-    --secondary-foreground: 240 6% 10%;
-    --muted: 40 11% 90%;
-    --muted-foreground: 240 4% 42%;
-    --accent: 2 79% 53%;
+    --secondary: 227 51% 13%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 225 29% 20%;
+    --muted-foreground: 220 14% 68%;
+    --accent: 16 100% 50%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 36 9% 80%;
-    --input: 36 9% 80%;
-    --ring: 2 79% 53%;
-    --radius: 0.5rem;
-    --dark-bg: 240 6% 10%;
-    --dark-fg: 48 20% 97%;
-    --red-accent: 2 79% 53%;
+    --border: 221 19% 36%;
+    --input: 221 19% 36%;
+    --ring: 16 100% 50%;
+    --radius: 0.25rem;
+    --dark-bg: 230 55% 7%;
+    --dark-fg: 0 0% 98%;
+    --red-accent: 16 100% 50%;
+    --hero-blue: 223 100% 35%;
+    --hero-blue-deep: 234 87% 20%;
+    --hero-blue-light: 216 100% 76%;
+    --hero-cyan: 183 74% 38%;
+    --glass: 0 0% 100%;
     --shadow-elegant: 0 22px 60px -26px hsl(var(--foreground) / 0.3);
   }
 
@@ -48,7 +53,7 @@
   html { scroll-behavior: smooth; }
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter Tight', sans-serif;
     overflow-x: hidden;
   }
   h1, h2, h3 { letter-spacing: 0; }
@@ -56,8 +61,8 @@
 }
 
 @layer utilities {
-  .font-display { font-family: 'Instrument Serif', serif; }
-  .font-body { font-family: 'DM Sans', sans-serif; }
+  .font-display { font-family: 'Inter Tight', sans-serif; }
+  .font-body { font-family: 'Inter Tight', sans-serif; }
   .text-hero { font-size: clamp(5rem, 17vw, 15rem); line-height: 0.82; letter-spacing: 0; }
   .text-display-xxl { font-size: clamp(4rem, 13vw, 11rem); line-height: 0.85; letter-spacing: 0; }
   .text-display-xl { font-size: clamp(3.5rem, 9vw, 7.5rem); line-height: 0.9; letter-spacing: 0; }
@@ -267,6 +272,11 @@
 .scroll-animate.in-view {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .scroll-animate, .animate-fade-slide-up, .animate-scale-in { opacity: 1 !important; transform: none !important; }
 }
 
 /* Split text animation */
