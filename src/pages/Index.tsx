@@ -19,7 +19,7 @@ const Index = () => {
           content="Portfolio of Ankur Saini - AI/ML Engineer and Data Science enthusiast with expertise in Python, machine learning, and deep learning. View projects, skills, and experience."
         />
         <meta name="keywords" content="Ankur Saini, AI Engineer, ML Engineer, Data Science, Python, Machine Learning, Deep Learning, Portfolio" />
-        <link rel="canonical" href="https://ankursaini.dev" />
+        <link rel="canonical" href="https://ankursaini.lovable.app/" />
       </Helmet>
       
       <div className="min-h-screen bg-background">
