@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Mail, Phone, MapPin, Github, Linkedin, Send, Loader2, CheckCircle, ArrowUpRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -6,7 +6,6 @@ import { Textarea } from "./ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
-import Marquee from "./Marquee";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -17,7 +16,6 @@ const contactSchema = z.object({
 
 const Contact = () => {
   const { toast } = useToast();
-  const sectionRef = useRef<HTMLElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -28,28 +26,6 @@ const Contact = () => {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.querySelectorAll('.scroll-animate').forEach((el, index) => {
-              setTimeout(() => {
-                el.classList.add('in-view');
-              }, index * 100);
-            });
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   const contactInfo = [
     {
@@ -141,28 +117,15 @@ const Contact = () => {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="py-20 lg:py-28 bg-secondary relative overflow-hidden">
-      {/* Background Marquee */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full pointer-events-none opacity-30">
-        <Marquee text="CONTACT" speed="slow" direction="right" />
-      </div>
+    <section id="contact" className="diroz-section diroz-contact">
+      <div className="diroz-shell">
+        <div className="section-heading"><span className="section-index">/ 06 — GET IN TOUCH</span><span>START A CONVERSATION</span></div>
+        <h2 className="section-display">LET'S <span>CONNECT.</span></h2>
+        <p className="contact-lede">Have a project in mind or want to collaborate? Drop me a message.</p>
 
-      <div className="container mx-auto px-6 md:px-10 lg:px-16 relative z-10">
-        <div className="mb-14 lg:mb-20">
-          <p className="text-sm text-muted-foreground mb-4 scroll-animate uppercase tracking-[0.3em]">
-            06 — Get In Touch
-          </p>
-          <h2 className="font-display text-display-xl italic text-foreground scroll-animate">
-            LET'S CONNECT
-          </h2>
-          <p className="text-muted-foreground mt-6 max-w-lg scroll-animate text-lg">
-            Have a project in mind or want to collaborate? Drop me a message!
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+        <div className="contact-layout grid lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Contact Form */}
-          <div className="scroll-animate">
+          <div>
             <h3 className="text-sm font-medium text-foreground uppercase tracking-widest mb-8 flex items-center gap-3">
               <div className="w-8 h-8 border border-primary flex items-center justify-center">
                 <Send className="w-4 h-4 text-primary" />
@@ -249,7 +212,7 @@ const Contact = () => {
 
           {/* Contact Info */}
           <div className="space-y-12">
-            <div className="scroll-animate">
+            <div>
               <h3 className="text-sm font-medium text-foreground uppercase tracking-widest mb-8">Contact Info</h3>
               <div className="space-y-8">
                 {contactInfo.map((info) => (
@@ -270,7 +233,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="scroll-animate pt-8 border-t border-border">
+            <div className="pt-8 border-t border-border">
               <h3 className="text-sm font-medium text-foreground uppercase tracking-widest mb-8">Connect</h3>
               <div className="flex gap-6">
                 {socials.map((social) => (
