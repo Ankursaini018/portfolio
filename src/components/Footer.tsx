@@ -1,87 +1,10 @@
-import { ArrowUp, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "./ui/button";
 
-const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const socials = [
-    { icon: Mail, href: "mailto:officialankur0707@gmail.com", label: "Email" },
-    { icon: Github, href: "https://github.com/Ankursaini018", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com/in/ankur-saini-596173374", label: "LinkedIn" },
-  ];
-
-  return (
-    <footer className="py-16 lg:py-24 bg-background border-t border-border">
-      <div className="container mx-auto px-6 md:px-10 lg:px-16">
-        {/* Large Name */}
-        <div className="mb-16">
-          <h2 className="font-display text-display-xxl text-foreground/10">
-            ANKUR SAINI
-          </h2>
-        </div>
-
-        <div className="grid lg:grid-cols-3 gap-12 items-end">
-          {/* Logo */}
-          <div>
-            <a 
-              href="#" 
-              onClick={(e) => { e.preventDefault(); scrollToTop(); }}
-              className="font-display text-4xl italic text-foreground hover:text-primary transition-colors"
-            >
-              Ankur Saini.
-            </a>
-            <p className="text-muted-foreground mt-4 text-sm">
-              AI/ML Engineer & Developer
-            </p>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex lg:justify-center gap-6">
-            {socials.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target={social.href.startsWith("mailto") ? undefined : "_blank"}
-                rel={social.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-                className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all"
-                aria-label={social.label}
-              >
-                <social.icon className="w-5 h-5" />
-              </a>
-            ))}
-          </div>
-
-          {/* Back to top */}
-          <div className="flex lg:justify-end">
-            <button
-              onClick={scrollToTop}
-              className="group flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors text-sm uppercase tracking-widest"
-            >
-              Back to top
-              <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:border-primary group-hover:bg-primary transition-all">
-                <ArrowUp className="w-4 h-4 group-hover:text-foreground transition-transform group-hover:-translate-y-1" />
-              </div>
-            </button>
-          </div>
-        </div>
-
-        {/* Copyright */}
-        <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Ankur Saini. All rights reserved.
-          </p>
-          <Link
-            to="/admin"
-            className="text-sm text-muted-foreground/30 hover:text-muted-foreground transition-colors"
-          >
-            ·
-          </Link>
-        </div>
-      </div>
-    </footer>
-  );
-};
-
+const Footer = () => <footer className="diroz-footer">
+  <div className="diroz-shell footer-top"><span>ANKUR SAINI ®</span><span>AI / ML ENGINEER<br />PILANI, INDIA</span><div className="footer-links"><a href="mailto:officialankur0707@gmail.com" aria-label="Email"><Mail /></a><a href="https://github.com/Ankursaini018" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><Github /></a><a href="https://linkedin.com/in/ankur-saini-596173374" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><Linkedin /></a></div></div>
+  <div className="diroz-shell"><h2>LET'S BUILD<br />WHAT'S NEXT<span>.</span></h2><a className="footer-email" href="mailto:officialankur0707@gmail.com">officialankur0707@gmail.com <ArrowUpRight /></a></div>
+  <div className="diroz-shell footer-bottom"><span>© {new Date().getFullYear()} ANKUR SAINI</span><span>DESIGNED TO THINK DIFFERENTLY</span><Button variant="ghost" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>BACK TO TOP ↑</Button><Link to="/admin" aria-label="Admin sign in" className="footer-admin">·</Link></div>
+</footer>;
 export default Footer;

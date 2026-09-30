@@ -1,66 +1,70 @@
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
-import { useEffect, useState } from "react";
-import profilePicture from "@/assets/profile-picture.jpg";
+import { ArrowDownRight, ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import portrait from "@/assets/profile-cutout.png";
 import { Button } from "./ui/button";
 
 const Hero = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const sceneRef = useRef<HTMLElement>(null);
+  const [active, setActive] = useState(0);
+  const [motionAllowed, setMotionAllowed] = useState(false);
 
-  useEffect(() => setIsLoaded(true), []);
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setMotionAllowed(!media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
 
-  const goToProjects = () => document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
+  const onPointerMove = (event: React.PointerEvent<HTMLElement>) => {
+    if (!motionAllowed || event.pointerType === "touch") return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+    sceneRef.current?.style.setProperty("--pointer-x", x.toFixed(3));
+    sceneRef.current?.style.setProperty("--pointer-y", y.toFixed(3));
+  };
+
+  const onPointerLeave = () => {
+    sceneRef.current?.style.setProperty("--pointer-x", "0");
+    sceneRef.current?.style.setProperty("--pointer-y", "0");
+  };
+
+  const scenes = [
+    { label: "Machine learning", short: "ML", tone: "blue" },
+    { label: "Data science", short: "DS", tone: "orange" },
+    { label: "AI engineering", short: "AI", tone: "cyan" },
+  ];
 
   return (
-    <section className="relative overflow-hidden bg-background px-6 pb-24 pt-28 md:px-10 lg:min-h-[760px] lg:px-16 lg:pb-28 lg:pt-36">
-      <div className="mx-auto grid w-full max-w-7xl items-end gap-14 lg:grid-cols-12 lg:gap-16">
-        <div className="lg:col-span-7">
-          <div className={`mb-8 flex items-center gap-3 ${isLoaded ? "animate-fade-slide-up" : "opacity-0"}`}>
-            <span className="h-px w-8 bg-border" />
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">AI / ML Engineer & Data Scientist</span>
-          </div>
-          <div className="overflow-hidden">
-            <h1 className={`font-display text-[4.8rem] leading-[0.82] text-foreground sm:text-8xl md:text-[9.5rem] ${isLoaded ? "animate-clip-reveal-up" : "opacity-0"}`}>
-              Building
-            </h1>
-          </div>
-          <div className="overflow-hidden">
-            <h1 className={`font-display text-[4.8rem] italic leading-[0.82] text-muted-foreground sm:text-8xl md:text-[9.5rem] ${isLoaded ? "animate-clip-reveal-up" : "opacity-0"}`} style={{ animationDelay: "0.15s" }}>
-              intelligent
-            </h1>
-          </div>
-          <div className="overflow-hidden">
-            <h1 className={`font-display text-[4.8rem] leading-[0.82] text-foreground sm:text-8xl md:text-[9.5rem] ${isLoaded ? "animate-clip-reveal-up" : "opacity-0"}`} style={{ animationDelay: "0.3s" }}>
-              systems.
-            </h1>
-          </div>
-
-          <div className={`mt-10 max-w-xl ${isLoaded ? "animate-fade-slide-up" : "opacity-0"}`} style={{ animationDelay: "0.65s" }}>
-            <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
-              I’m Ankur Saini, turning machine learning, data, and thoughtful engineering into useful digital products.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-6">
-              <Button onClick={goToProjects} className="h-12 rounded-full px-6 text-xs font-semibold uppercase tracking-widest">
-                View my work <ArrowDown className="ml-1" />
-              </Button>
-              <div className="flex items-center gap-4">
-                <a href="mailto:officialankur0707@gmail.com" aria-label="Email" className="social-icon"><Mail /></a>
-                <a href="https://github.com/Ankursaini018" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="social-icon"><Github /></a>
-                <a href="https://linkedin.com/in/ankur-saini-596173374" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="social-icon"><Linkedin /></a>
-              </div>
-            </div>
+    <section ref={sceneRef} className={`diroz-hero scene-${active}`} onPointerMove={onPointerMove} onPointerLeave={onPointerLeave} aria-label="Ankur Saini introduction">
+      <div className="hero-ambient" aria-hidden="true" />
+      <div className="hero-grain" aria-hidden="true" />
+      <div className="hero-content">
+        <div className="hero-intro">
+          <span className="hero-kicker">Independent AI / ML engineer</span>
+          <p>BUILDING IDEAS<br />INTO INTELLIGENCE.</p>
+          <div className="hero-socials">
+            <a href="mailto:officialankur0707@gmail.com" aria-label="Email Ankur" title="Email"><Mail /></a>
+            <a href="https://github.com/Ankursaini018" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><Github /></a>
+            <a href="https://linkedin.com/in/ankur-saini-596173374" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><Linkedin /></a>
           </div>
         </div>
-
-        <div className={`relative lg:col-span-5 ${isLoaded ? "animate-scale-in" : "opacity-0"}`} style={{ animationDelay: "0.35s" }}>
-          <div className="group relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-muted">
-            <img src={profilePicture} alt="Ankur Saini" className="h-full w-full object-cover object-center grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0" />
-            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-foreground/80 to-transparent p-6 pt-24 text-background">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em]">Pilani, India</p>
-              <p className="font-display text-3xl italic">Hello.</p>
-            </div>
-          </div>
-          <div className="absolute -bottom-5 -right-3 flex h-24 w-24 rotate-6 items-center justify-center rounded-full bg-primary text-center text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-elegant md:-right-6 md:h-28 md:w-28">
-            Open to<br />work
+        <div className="hero-discipline" aria-label="Expertise">
+          <span>Machine Learning <ArrowDownRight /></span>
+          <span>Data Science <ArrowDownRight /></span>
+          <span>AI Development <ArrowDownRight /></span>
+        </div>
+      </div>
+      <div className="hero-portrait-layer" aria-hidden="true"><img src={portrait} alt="" /></div>
+      <div className="hero-bottom">
+        <div className="hero-meta"><span className="hero-status-dot" /> PILANI, INDIA <span className="hero-meta-divider">—</span> OPEN TO WORK</div>
+        <a href="#contact" className="hero-availability">LET'S TALK <ArrowUpRight /></a>
+        <h1>ANKUR <span>SAINI</span></h1>
+        <div className="hero-bottom-row">
+          <Button variant="ghost" onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })} className="hero-scroll">SCROLL TO EXPLORE <ArrowDownRight /></Button>
+          <div className="hero-scenes" aria-label="Choose visual scene">
+            {scenes.map((scene, index) => <Button key={scene.short} variant="ghost" aria-label={`Show ${scene.label} scene`} aria-pressed={active === index} onClick={() => setActive(index)} className={`hero-scene scene-tone-${scene.tone} ${active === index ? "is-active" : ""}`}><span>{scene.short}</span></Button>)}
           </div>
         </div>
       </div>

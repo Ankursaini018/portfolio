@@ -1,123 +1,27 @@
 import { Brain, Code2, Database, TrendingUp } from "lucide-react";
-import { useEffect, useRef } from "react";
-import Marquee from "./Marquee";
+import portrait from "@/assets/profile-picture.jpg";
 
-const About = () => {
-  const sectionRef = useRef<HTMLElement>(null);
+const highlights = [
+  { icon: Brain, label: "Machine Learning", description: "Deep Learning & Neural Networks" },
+  { icon: Code2, label: "Python", description: "Flask, NumPy, Pandas" },
+  { icon: Database, label: "Data Science", description: "Analysis & Visualization" },
+  { icon: TrendingUp, label: "Problem Solving", description: "Real-world Solutions" },
+];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.querySelectorAll('.scroll-animate').forEach((el, index) => {
-              setTimeout(() => {
-                el.classList.add('in-view');
-              }, index * 100);
-            });
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const highlights = [
-    { icon: Brain, label: "Machine Learning", description: "Deep Learning & Neural Networks" },
-    { icon: Code2, label: "Python Expert", description: "Flask, NumPy, Pandas" },
-    { icon: Database, label: "Data Science", description: "Analysis & Visualization" },
-    { icon: TrendingUp, label: "Problem Solver", description: "Real-world Solutions" },
-  ];
-
-  return (
-    <section ref={sectionRef} id="about" className="py-20 lg:py-28 bg-background relative overflow-hidden">
-      {/* Background Marquee */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full pointer-events-none opacity-50">
-        <Marquee text="ABOUT" speed="slow" />
+const About = () => <section id="about" className="diroz-section diroz-about">
+  <div className="diroz-shell">
+    <div className="section-heading"><span className="section-index">/ 01 — ABOUT ME</span><span>THE PERSON BEHIND THE WORK</span></div>
+    <p className="about-statement">I build <em>intelligent systems</em> that turn complex data into real-world impact.</p>
+    <div className="about-grid">
+      <div className="about-photo"><img src={portrait} alt="Ankur Saini in Pilani" loading="lazy" /><span>ANKUR SAINI / PILANI, INDIA</span></div>
+      <div className="about-details">
+        <span className="section-index">WHO I AM ↗</span>
+        <h2>Curious by nature.<br />Engineer by practice.</h2>
+        <p>I'm an AI/ML and Data Science enthusiast with hands-on experience developing and deploying machine learning models. I work with Python, SQL, and data visualization to create useful solutions for real-world challenges.</p>
+        <p>I enjoy solving problems with people. I'm currently pursuing a B.Tech in Artificial Intelligence at B.K. Birla Institute of Engineering & Technology, Pilani.</p>
+        <div className="about-highlights">{highlights.map((item) => <div key={item.label}><item.icon /><div><strong>{item.label}</strong><span>{item.description}</span></div></div>)}</div>
       </div>
-
-      <div className="container mx-auto px-6 md:px-10 lg:px-16 relative z-10">
-        {/* Section Header */}
-        <div className="mb-14 lg:mb-20">
-          <p className="text-sm text-muted-foreground mb-4 scroll-animate uppercase tracking-[0.3em]">
-            01 — About Me
-          </p>
-          <h2 className="font-display text-display-xl italic text-foreground scroll-animate">
-            MANIFESTO
-          </h2>
-        </div>
-
-        {/* Large Text Block */}
-        <div className="max-w-5xl mb-20 lg:mb-28">
-          <p className="text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed scroll-animate text-foreground">
-            For me, AI/ML means <span className="text-primary font-normal">intelligent solutions</span>, 
-            clean code, and attention to <span className="text-primary font-normal">real-world impact</span>. 
-            Create fast. On time. On brief. Building my own projects and open to new collaborations.
-          </p>
-        </div>
-        
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          {/* Content */}
-          <div className="space-y-8">
-            <p className="text-lg text-muted-foreground leading-relaxed scroll-animate">
-              Dynamic AI/ML & Data Science enthusiast with practical experience in developing 
-              and deploying machine learning models. My expertise in Python, SQL, and data 
-              visualization tools enables me to create intelligent solutions that address 
-              real-world challenges.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed scroll-animate">
-              Known for strong problem-solving abilities and a collaborative spirit, I thrive 
-              in team-driven environments. Currently pursuing B.Tech in Artificial Intelligence 
-              at B.K. Birla Institute of Engineering & Technology, Pilani.
-            </p>
-
-            {/* Skills Grid */}
-            <div className="grid grid-cols-2 gap-4 pt-8">
-              {highlights.map((item, index) => (
-                <div 
-                  key={item.label}
-                  className="scroll-animate card-minimal p-6 group hover-lift"
-                  style={{ transitionDelay: `${index * 100}ms` }}
-                >
-                  <item.icon className="w-6 h-6 text-primary mb-4 transition-transform group-hover:scale-110" />
-                  <h3 className="text-sm font-medium text-foreground mb-1">{item.label}</h3>
-                  <p className="text-xs text-muted-foreground">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Stats/Numbers */}
-          <div className="scroll-animate">
-            <div className="grid grid-cols-2 gap-12">
-              <div className="border-l-2 border-primary pl-6">
-                <p className="font-display text-6xl lg:text-7xl text-foreground">2+</p>
-                <p className="text-sm text-muted-foreground mt-2 uppercase tracking-wider">Years of Learning</p>
-              </div>
-              <div className="border-l-2 border-primary pl-6">
-                <p className="font-display text-6xl lg:text-7xl text-foreground">5+</p>
-                <p className="text-sm text-muted-foreground mt-2 uppercase tracking-wider">Projects Built</p>
-              </div>
-              <div className="border-l-2 border-primary pl-6">
-                <p className="font-display text-6xl lg:text-7xl text-foreground">10+</p>
-                <p className="text-sm text-muted-foreground mt-2 uppercase tracking-wider">Technologies</p>
-              </div>
-              <div className="border-l-2 border-primary pl-6">
-                <p className="font-display text-6xl lg:text-7xl text-foreground">∞</p>
-                <p className="text-sm text-muted-foreground mt-2 uppercase tracking-wider">Curiosity</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
+    </div>
+  </div>
+</section>;
 export default About;
