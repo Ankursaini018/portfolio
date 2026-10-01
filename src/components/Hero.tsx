@@ -1,6 +1,9 @@
 import { ArrowDownRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import portrait from "@/assets/profile-cutout.png";
+import stripBlue from "@/assets/hero-strip-blue.jpg";
+import stripOrange from "@/assets/hero-strip-orange.jpg";
+import stripCyan from "@/assets/hero-strip-cyan.jpg";
 import { Button } from "./ui/button";
 
 const Hero = () => {
@@ -31,9 +34,9 @@ const Hero = () => {
   };
 
   const scenes = [
-    { label: "Machine learning", short: "ML", tone: "blue" },
-    { label: "Data science", short: "DS", tone: "orange" },
-    { label: "AI engineering", short: "AI", tone: "cyan" },
+    { label: "Machine learning", short: "ML", tone: "blue", img: stripBlue },
+    { label: "Data science", short: "DS", tone: "orange", img: stripOrange },
+    { label: "AI engineering", short: "AI", tone: "cyan", img: stripCyan },
   ];
 
   return (
