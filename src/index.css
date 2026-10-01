@@ -471,7 +471,7 @@
 .nav-panel-links button:hover { color: hsl(var(--primary)); background: transparent; }
 .nav-panel-links button small { width: 48px; align-self: start; font-size: 11px; color: hsl(var(--primary)); }
 .nav-panel-links button svg { margin-left: auto; }
-.diroz-hero { --pointer-x: 0; --pointer-y: 0; position: relative; isolation: isolate; overflow: hidden; height: min(870px, 100svh); min-height: 700px; color: hsl(var(--foreground)); background: hsl(var(--hero-blue-deep)); perspective: 1100px; }
+.diroz-hero { --pointer-x: 0; --pointer-y: 0; position: relative; isolation: isolate; overflow: hidden; height: min(870px, 86svh); min-height: 630px; color: hsl(var(--foreground)); background: hsl(var(--hero-blue-deep)); perspective: 1100px; }
 .hero-ambient { position: absolute; inset: -15%; z-index: -2; background: radial-gradient(ellipse at 21% 100%, hsl(var(--hero-blue-light)) 0%, hsl(var(--hero-blue-light) / .82) 19%, transparent 52%), radial-gradient(ellipse at 93% 12%, hsl(var(--hero-blue)) 0%, transparent 70%), linear-gradient(130deg, hsl(var(--hero-blue-deep)) 0%, hsl(var(--hero-blue)) 62%, hsl(var(--hero-blue-deep)) 100%); transform: translate3d(calc(var(--pointer-x) * -22px), calc(var(--pointer-y) * -14px), -30px) scale(1.12); animation: ambient-shift 14s ease-in-out infinite alternate; transition: transform .7s ease; }
 .scene-1 .hero-ambient { filter: hue-rotate(32deg) saturate(1.3); }
 .scene-2 .hero-ambient { filter: hue-rotate(-35deg) saturate(1.2); }
@@ -497,7 +497,7 @@
 .hero-availability { position: absolute; top: 0; right: 0; display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; }
 .hero-availability:hover { text-decoration: underline; }
 .hero-availability svg { width: 17px; height: 17px; }
-.hero-bottom h1 { margin-top: 13px; padding-top: 8px; border-top: 1px solid hsl(var(--foreground) / .25); font-size: clamp(100px, 18.3vw, 350px); font-weight: 800; line-height: .82; white-space: nowrap; letter-spacing: 0; transform: translate3d(calc(var(--pointer-x) * -8px), 0, 0); transition: transform .7s ease; }
+.hero-bottom h1 { margin-top: 13px; padding-top: 8px; border-top: 1px solid hsl(var(--foreground) / .25); font-size: clamp(70px, 13vw, 220px); font-weight: 800; line-height: .82; white-space: nowrap; letter-spacing: 0; transform: translate3d(calc(var(--pointer-x) * -8px), 0, 0); transition: transform .7s ease; }
 .hero-bottom h1 span { position: relative; z-index: 5; }
 .hero-bottom-row { display: flex; align-items: center; justify-content: space-between; min-height: 135px; }
 .hero-scroll { padding: 0 !important; color: hsl(var(--foreground)) !important; font-size: 12px !important; font-weight: 700 !important; }
@@ -591,12 +591,12 @@
 .footer-bottom button { color: hsl(var(--foreground)); font-size: 11px; }
 .footer-admin { color: hsl(var(--muted-foreground) / .55); font-size: 15px; }
 @media (max-width: 991px) {
-  .diroz-hero { height: 820px; min-height: 720px; }
+  .diroz-hero { height: min(780px, 86svh); min-height: 630px; }
   .hero-portrait-layer { height: 95%; bottom: -11%; }
   .hero-content { top: 32%; }
   .hero-intro { max-width: 37%; }
   .hero-discipline { width: 23%; }
-  .hero-bottom h1 { font-size: 18vw; }
+  .hero-bottom h1 { font-size: 13vw; }
   .about-grid { gap: 50px; }
   .about-highlights { grid-template-columns: 1fr; }
 }
@@ -612,7 +612,7 @@
   .nav-contact { min-width: 120px; padding-inline: 9px !important; font-size: 12px !important; }
   .nav-divider { width: 22px; }
   .nav-panel { top: 55px; width: min(440px, calc(100vw - 30px)); }
-  .diroz-hero { height: min(900px, 100svh); min-height: 690px; }
+  .diroz-hero { height: 86svh; min-height: 620px; }
   .hero-content { top: 18%; left: 5%; right: 5%; }
   .hero-intro { max-width: 65%; }
   .hero-kicker { font-size: 9px; }
@@ -624,7 +624,7 @@
   .hero-socials svg { width: 17px; }
   .hero-portrait-layer { height: 76%; bottom: 10%; left: 50%; }
   .hero-bottom { left: 5%; right: 5%; }
-  .hero-bottom h1 { font-size: 17.5vw; margin-top: 13px; }
+  .hero-bottom h1 { font-size: 12.8vw; margin-top: 13px; }
   .hero-bottom-row { min-height: 105px; }
   .hero-scenes { gap: 5px; }
   .hero-scene { width: 58px; height: 63px; font-size: 19px !important; }
@@ -647,13 +647,13 @@
   .footer-bottom { flex-wrap: wrap; }
 }
 @media (max-width: 479px) {
-  .diroz-hero { min-height: 670px; }
+  .diroz-hero { min-height: 620px; }
   .hero-content { top: 17%; }
   .hero-intro { max-width: 80%; }
   .hero-intro p { font-size: 26px; }
   .hero-discipline { top: 175px; }
   .hero-portrait-layer { height: 68%; bottom: 13%; left: 49%; }
-  .hero-bottom h1 { font-size: 16.7vw; }
+  .hero-bottom h1 { font-size: 12.8vw; }
   .hero-meta-divider { display: none; }
   .hero-availability { top: -30px; }
   .hero-bottom-row { min-height: 100px; }
