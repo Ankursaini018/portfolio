@@ -1,4 +1,4 @@
-import { ArrowDownRight, ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDownRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import portrait from "@/assets/profile-cutout.png";
 import { Button } from "./ui/button";
@@ -44,11 +44,6 @@ const Hero = () => {
         <div className="hero-intro">
           <span className="hero-kicker">Independent AI / ML engineer</span>
           <p>BUILDING IDEAS<br />INTO INTELLIGENCE.</p>
-          <div className="hero-socials">
-            <a href="mailto:officialankur0707@gmail.com" aria-label="Email Ankur" title="Email"><Mail /></a>
-            <a href="https://github.com/Ankursaini018" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><Github /></a>
-            <a href="https://linkedin.com/in/ankur-saini-596173374" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><Linkedin /></a>
-          </div>
         </div>
         <div className="hero-discipline" aria-label="Expertise">
           <span>Machine Learning <ArrowDownRight /></span>
@@ -59,7 +54,6 @@ const Hero = () => {
       <div className="hero-portrait-layer" aria-hidden="true"><img src={portrait} alt="" /></div>
       <div className="hero-bottom">
         <div className="hero-meta"><span className="hero-status-dot" /> PILANI, INDIA <span className="hero-meta-divider">—</span> OPEN TO WORK</div>
-        <a href="#contact" className="hero-availability">LET'S TALK <ArrowUpRight /></a>
         <h1>ANKUR <span>SAINI</span></h1>
         <div className="hero-bottom-row">
           <Button variant="ghost" onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })} className="hero-scroll">SCROLL TO EXPLORE <ArrowDownRight /></Button>
