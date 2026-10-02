@@ -61,7 +61,7 @@ const Hero = () => {
         <div className="hero-bottom-row">
           <Button variant="ghost" onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })} className="hero-scroll">SCROLL TO EXPLORE <ArrowDownRight /></Button>
           <div className="hero-scenes" aria-label="Choose visual scene">
-            {scenes.map((scene, index) => <Button key={scene.short} variant="ghost" aria-label={`Show ${scene.label} scene`} aria-pressed={active === index} onClick={() => setActive(index)} className={`hero-scene scene-tone-${scene.tone} ${active === index ? "is-active" : ""}`}><span>{scene.short}</span></Button>)}
+            {scenes.map((scene, index) => <Button key={scene.short} variant="ghost" aria-label={`Show ${scene.label} scene`} aria-pressed={active === index} onClick={() => setActive(index)} className={`hero-scene scene-tone-${scene.tone} ${active === index ? "is-active" : ""}`}><img src={scene.img} alt="" /><span>{scene.short}</span></Button>)}
           </div>
         </div>
       </div>
