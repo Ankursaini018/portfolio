@@ -1,9 +1,9 @@
 import { ArrowDownRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import portrait from "@/assets/profile-cutout.png";
-import stripBlue from "@/assets/hero-strip-blue.jpg";
-import stripOrange from "@/assets/hero-strip-orange.jpg";
-import stripCyan from "@/assets/hero-strip-cyan.jpg";
+import portraitGreen from "@/assets/hero-portrait-green.png.asset.json";
+import portraitNavy from "@/assets/hero-portrait-navy.png.asset.json";
+import portraitBrown from "@/assets/hero-portrait-brown.png.asset.json";
 import { Button } from "./ui/button";
 
 const Hero = () => {
@@ -34,9 +34,9 @@ const Hero = () => {
   };
 
   const scenes = [
-    { label: "Machine learning", short: "ML", tone: "blue", img: stripBlue },
-    { label: "Data science", short: "DS", tone: "orange", img: stripOrange },
-    { label: "AI engineering", short: "AI", tone: "cyan", img: stripCyan },
+    { label: "green suit portrait", img: portraitGreen.url },
+    { label: "navy suit portrait", img: portraitNavy.url },
+    { label: "brown suit portrait", img: portraitBrown.url },
   ];
 
   return (
@@ -61,7 +61,7 @@ const Hero = () => {
         <div className="hero-bottom-row">
           <Button variant="ghost" onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })} className="hero-scroll">SCROLL TO EXPLORE <ArrowDownRight /></Button>
           <div className="hero-scenes" aria-label="Choose visual scene">
-            {scenes.map((scene, index) => <Button key={scene.short} variant="ghost" aria-label={`Show ${scene.label} scene`} aria-pressed={active === index} onClick={() => setActive(index)} className={`hero-scene scene-tone-${scene.tone} ${active === index ? "is-active" : ""}`}><img src={scene.img} alt="" /></Button>)}
+            {scenes.map((scene, index) => <Button key={scene.label} variant="ghost" aria-label={`Show ${scene.label}`} aria-pressed={active === index} onClick={() => setActive(index)} className={`hero-scene ${active === index ? "is-active" : ""}`}><img src={scene.img} alt={scene.label} onError={(event) => { if (window.location.hostname === "localhost" && event.currentTarget.src !== `https://ankursaini.lovable.app${scene.img}`) event.currentTarget.src = `https://ankursaini.lovable.app${scene.img}`; }} /></Button>)}
           </div>
         </div>
       </div>
