@@ -626,9 +626,9 @@
   .hero-portrait-layer { height: 76%; bottom: 10%; left: 50%; }
   .hero-bottom { left: 5%; right: 5%; }
   .hero-bottom h1 { font-size: 12.8vw; margin-top: 13px; }
-  .hero-bottom-row { min-height: 105px; }
+  .hero-bottom-row { min-height: 70px; }
   .hero-scenes { gap: 5px; }
-  .hero-scene { width: 58px; height: 63px; font-size: 19px !important; }
+  .hero-scene { width: 46px; height: 122px; }
   .hero-meta { font-size: 10px; }
   .hero-availability { font-size: 10px; }
   .hero-scroll { font-size: 10px !important; }
@@ -657,8 +657,8 @@
   .hero-bottom h1 { font-size: 12.8vw; }
   .hero-meta-divider { display: none; }
   .hero-availability { top: -30px; }
-  .hero-bottom-row { min-height: 100px; }
-  .hero-scene { width: 51px; height: 58px; }
+  .hero-bottom-row { min-height: 62px; }
+  .hero-scene { width: 40px; height: 112px; }
   .section-display { font-size: clamp(48px, 12vw, 70px); }
   .about-highlights { grid-template-columns: 1fr; }
   .about-details h2 { font-size: 32px; }
