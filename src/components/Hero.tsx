@@ -1,6 +1,8 @@
 import { ArrowDownRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import portrait from "@/assets/profile-cutout.png";
+import portraitGreenCutout from "@/assets/hero-green-cutout.png";
+import portraitNavyCutout from "@/assets/hero-navy-cutout.png";
+import portraitBrownCutout from "@/assets/hero-brown-cutout.png";
 import portraitGreen from "@/assets/hero-portrait-green.png.asset.json";
 import portraitNavy from "@/assets/hero-portrait-navy.png.asset.json";
 import portraitBrown from "@/assets/hero-portrait-brown.png.asset.json";
@@ -34,9 +36,9 @@ const Hero = () => {
   };
 
   const scenes = [
-    { label: "green suit portrait", img: portraitGreen.url },
-    { label: "navy suit portrait", img: portraitNavy.url },
-    { label: "brown suit portrait", img: portraitBrown.url },
+    { label: "green suit portrait", img: portraitGreen.url, cutout: portraitGreenCutout },
+    { label: "navy suit portrait", img: portraitNavy.url, cutout: portraitNavyCutout },
+    { label: "brown suit portrait", img: portraitBrown.url, cutout: portraitBrownCutout },
   ];
 
   return (
@@ -54,7 +56,7 @@ const Hero = () => {
           <span>AI Development <ArrowDownRight /></span>
         </div>
       </div>
-      <div className="hero-portrait-layer" aria-hidden="true"><img src={portrait} alt="" /></div>
+      <div className="hero-portrait-layer" aria-hidden="true"><img key={active} src={scenes[active].cutout} alt="" /></div>
       <div className="hero-bottom">
         <div className="hero-meta"><span className="hero-status-dot" /> PILANI, INDIA <span className="hero-meta-divider">—</span> OPEN TO WORK</div>
         <h1>ANKUR <span>SAINI</span></h1>

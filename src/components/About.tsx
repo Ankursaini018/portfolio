@@ -1,5 +1,5 @@
 import { Brain, Code2, Database, TrendingUp } from "lucide-react";
-import portrait from "@/assets/profile-picture.jpg";
+import portrait from "@/assets/hero-portrait-green.png.asset.json";
 
 const highlights = [
   { icon: Brain, label: "Machine Learning", description: "Deep Learning & Neural Networks" },
@@ -13,7 +13,7 @@ const About = () => <section id="about" className="diroz-section diroz-about">
     <div className="section-heading"><span className="section-index">/ 01 — ABOUT ME</span><span>THE PERSON BEHIND THE WORK</span></div>
     <p className="about-statement">I build <em>intelligent systems</em> that turn complex data into real-world impact.</p>
     <div className="about-grid">
-      <div className="about-photo"><img src={portrait} alt="Ankur Saini in Pilani" loading="lazy" /><span>ANKUR SAINI / PILANI, INDIA</span></div>
+      <div className="about-photo"><img src={portrait.url} alt="Ankur Saini in a green suit" loading="lazy" onError={(event) => { if (window.location.hostname === "localhost" && event.currentTarget.src !== `https://ankursaini.lovable.app${portrait.url}`) event.currentTarget.src = `https://ankursaini.lovable.app${portrait.url}`; }} /><span>ANKUR SAINI / PILANI, INDIA</span></div>
       <div className="about-details">
         <span className="section-index">WHO I AM ↗</span>
         <h2>Curious by nature.<br />Engineer by practice.</h2>
