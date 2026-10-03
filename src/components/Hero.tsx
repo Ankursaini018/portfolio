@@ -12,6 +12,7 @@ const Hero = () => {
   const sceneRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
   const [motionAllowed, setMotionAllowed] = useState(false);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -20,6 +21,14 @@ const Hero = () => {
     media.addEventListener("change", update);
     return () => media.removeEventListener("change", update);
   }, []);
+
+  useEffect(() => {
+    if (!motionAllowed || paused) return;
+    const timer = window.setTimeout(() => {
+      if (!document.hidden) setActive((current) => (current + 1) % 3);
+    }, 3800);
+    return () => window.clearTimeout(timer);
+  }, [active, motionAllowed, paused]);
 
   const onPointerMove = (event: React.PointerEvent<HTMLElement>) => {
     if (!motionAllowed || event.pointerType === "touch") return;
@@ -62,7 +71,7 @@ const Hero = () => {
         <h1>ANKUR <span>SAINI</span></h1>
         <div className="hero-bottom-row">
           <Button variant="ghost" onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })} className="hero-scroll">SCROLL TO EXPLORE <ArrowDownRight /></Button>
-          <div className="hero-scenes" aria-label="Choose visual scene">
+          <div className="hero-scenes" aria-label="Choose visual scene" onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false); }}>
             {scenes.map((scene, index) => <Button key={scene.label} variant="ghost" aria-label={`Show ${scene.label}`} aria-pressed={active === index} onClick={() => setActive(index)} className={`hero-scene ${active === index ? "is-active" : ""}`}><img src={scene.img} alt={scene.label} onError={(event) => { if (window.location.hostname === "localhost" && event.currentTarget.src !== `https://ankursaini.lovable.app${scene.img}`) event.currentTarget.src = `https://ankursaini.lovable.app${scene.img}`; }} /></Button>)}
           </div>
         </div>
