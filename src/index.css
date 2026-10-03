@@ -617,7 +617,7 @@
   .nav-contact { min-width: 120px; padding-inline: 9px !important; font-size: 12px !important; }
   .nav-divider { width: 22px; }
   .nav-panel { top: 55px; width: min(440px, calc(100vw - 30px)); }
-  .diroz-hero { height: 86svh; min-height: 620px; }
+  .diroz-hero { height: min(760px, 86svh); min-height: 620px; }
   .hero-content { top: 18%; left: 5%; right: 5%; }
   .hero-intro { max-width: 65%; }
   .hero-kicker { font-size: 9px; }
