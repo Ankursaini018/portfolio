@@ -657,7 +657,7 @@
   .hero-intro { max-width: 80%; }
   .hero-intro p { font-size: 26px; }
   .hero-discipline { top: 175px; }
-  .hero-portrait-layer { height: 68%; bottom: 13%; left: 49%; }
+  .hero-portrait-layer { height: 60%; bottom: 11%; left: 50%; }
   .hero-bottom h1 { width: calc(100% - 78px); font-size: 9.9vw; }
   .hero-meta-divider { display: none; }
   .hero-availability { top: -30px; }
