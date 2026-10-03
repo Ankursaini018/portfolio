@@ -489,7 +489,7 @@
 .hero-discipline span { display: flex; align-items: center; justify-content: space-between; padding-bottom: 14px; font-size: 15px; font-weight: 600; }
 .hero-discipline svg { width: 17px; height: 17px; }
 .hero-portrait-layer { position: absolute; z-index: 3; left: 50%; bottom: -17%; height: 112%; width: auto; transform: translateX(calc(-50% + var(--pointer-x) * 24px)) translateY(calc(var(--pointer-y) * 12px)) rotateY(calc(var(--pointer-x) * -7deg)); transform-style: preserve-3d; transition: transform .6s cubic-bezier(.2,.8,.2,1); pointer-events: none; animation: portrait-float 7s ease-in-out infinite alternate; }
-.hero-portrait-layer img { display: block; height: 100%; width: auto; max-width: none; filter: drop-shadow(0 32px 36px hsl(var(--background) / .25)); }
+.hero-portrait-layer img { display: block; height: 100%; width: auto; max-width: none; filter: drop-shadow(0 32px 36px hsl(var(--background) / .25)); animation: portrait-reveal .75s cubic-bezier(.16, 1, .3, 1) both; }
 .hero-bottom { position: absolute; z-index: 6; bottom: 0; left: 2.2%; right: 2.2%; }
 .hero-meta { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; }
 .hero-status-dot { width: 7px; height: 7px; border-radius: 50%; background: hsl(var(--foreground)); box-shadow: 0 0 0 4px hsl(var(--foreground) / .18); animation: status-pulse 2s ease-in-out infinite; }
@@ -502,7 +502,7 @@
 .hero-bottom-row { display: flex; align-items: center; justify-content: space-between; min-height: 42px; }
 .hero-scroll { padding: 0 !important; color: hsl(var(--foreground)) !important; font-size: 12px !important; font-weight: 700 !important; }
 .hero-scroll:hover { background: transparent !important; opacity: .7; }
-.hero-scenes { position: absolute; right: 0; bottom: 42px; z-index: 7; display: flex; align-items: flex-end; gap: 5px; }
+.hero-scenes { position: absolute; left: 72.5vw; bottom: 42px; z-index: 7; display: flex; align-items: flex-end; gap: 5px; }
 .hero-scene { position: relative; width: clamp(32px, 3.2vw, 46px); height: clamp(132px, 14.2vw, 196px); overflow: hidden; border-radius: 0 !important; color: hsl(var(--foreground)) !important; padding: 0 !important; background: hsl(var(--secondary)) !important; border: 2px solid hsl(var(--foreground) / .24); animation: strip-slide-in .85s cubic-bezier(.16, 1, .3, 1) both; transition: translate .4s ease, border-color .4s ease; }
 .hero-scene:nth-child(2) { animation-delay: .13s; }
 .hero-scene:nth-child(3) { animation-delay: .26s; }
@@ -513,6 +513,7 @@
 .hero-scene:hover, .hero-scene:focus-visible { translate: 0 -9px; }
 .hero-scene:hover img { transform: scale(1.08); }
 @keyframes strip-slide-in { from { opacity: 0; transform: translateY(55px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes portrait-reveal { from { opacity: 0; transform: translateX(36px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes strip-drift { from { object-position: center 0%; } to { object-position: center 28%; } }
 @keyframes ambient-shift { from { background-position: 0 0; } to { background-position: 5vw -5vh; } }
 @keyframes portrait-float { from { margin-bottom: 0; } to { margin-bottom: 13px; } }
@@ -630,7 +631,7 @@
   .hero-bottom { left: 5%; right: 5%; }
   .hero-bottom h1 { width: calc(100% - 102px); font-size: 10.6vw; margin-top: 13px; }
   .hero-bottom-row { min-height: 48px; }
-  .hero-scenes { bottom: 48px; gap: 4px; }
+  .hero-scenes { left: 72.5vw; bottom: 48px; gap: 4px; }
   .hero-scene { width: clamp(27px, 7vw, 34px); height: clamp(104px, 27vw, 132px); }
   .hero-meta { font-size: 10px; }
   .hero-availability { font-size: 10px; }
@@ -661,7 +662,7 @@
   .hero-meta-divider { display: none; }
   .hero-availability { top: -30px; }
   .hero-bottom-row { min-height: 42px; }
-  .hero-scenes { bottom: 42px; gap: 3px; }
+  .hero-scenes { left: 65.5vw; bottom: 42px; gap: 3px; }
   .hero-scene { width: 23px; height: 94px; }
   .section-display { font-size: clamp(48px, 12vw, 70px); }
   .about-highlights { grid-template-columns: 1fr; }
@@ -674,5 +675,5 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-ambient, .hero-portrait-layer, .hero-status-dot { animation: none !important; transform: none !important; }
   .hero-portrait-layer { transform: translateX(-50%) !important; }
-  .hero-scene, .hero-scene img { animation: none !important; }
+  .hero-scene, .hero-scene img, .hero-portrait-layer img { animation: none !important; }
 }
