@@ -1,8 +1,8 @@
 import { ArrowDownRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import portraitGreenCutout from "@/assets/hero-green-cutout.png";
-import portraitNavyCutout from "@/assets/hero-navy-cutout.png";
-import portraitBrownCutout from "@/assets/hero-brown-cutout.png";
+import portraitGreenCutout from "@/assets/hero-green-clean.png";
+import portraitNavyCutout from "@/assets/hero-navy-clean.png";
+import portraitBrownCutout from "@/assets/hero-brown-clean.png";
 import portraitGreen from "@/assets/hero-portrait-green.png.asset.json";
 import portraitNavy from "@/assets/hero-portrait-navy.png.asset.json";
 import portraitBrown from "@/assets/hero-portrait-brown.png.asset.json";
@@ -11,8 +11,15 @@ import { Button } from "./ui/button";
 const Hero = () => {
   const sceneRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
+  const [previous, setPrevious] = useState<number | null>(null);
   const [motionAllowed, setMotionAllowed] = useState(false);
   const [paused, setPaused] = useState(false);
+
+  const showScene = (next: number) => {
+    if (next === active) return;
+    setPrevious(active);
+    setActive(next);
+  };
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -25,7 +32,7 @@ const Hero = () => {
   useEffect(() => {
     if (!motionAllowed || paused) return;
     const timer = window.setTimeout(() => {
-      if (!document.hidden) setActive((current) => (current + 1) % 3);
+      if (!document.hidden) showScene((active + 1) % 3);
     }, 3800);
     return () => window.clearTimeout(timer);
   }, [active, motionAllowed, paused]);
@@ -65,14 +72,16 @@ const Hero = () => {
           <span>AI Development <ArrowDownRight /></span>
         </div>
       </div>
-      <div className="hero-portrait-layer" aria-hidden="true"><img key={active} src={scenes[active].cutout} alt="" /></div>
+      <div className="hero-portrait-layer" aria-hidden="true">
+        {scenes.map((scene, index) => <img key={scene.label} src={scene.cutout} alt="" className={`hero-portrait-slide ${index === active ? "is-active" : index === previous ? "is-leaving" : ""}`} />)}
+      </div>
       <div className="hero-bottom">
         <div className="hero-meta"><span className="hero-status-dot" /> PILANI, INDIA <span className="hero-meta-divider">—</span> OPEN TO WORK</div>
         <h1>ANKUR <span>SAINI</span></h1>
         <div className="hero-bottom-row">
           <Button variant="ghost" onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })} className="hero-scroll">SCROLL TO EXPLORE <ArrowDownRight /></Button>
           <div className="hero-scenes" aria-label="Choose visual scene" onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false); }}>
-            {scenes.map((scene, index) => <Button key={scene.label} variant="ghost" aria-label={`Show ${scene.label}`} aria-pressed={active === index} onClick={() => setActive(index)} className={`hero-scene ${active === index ? "is-active" : ""}`}><img src={scene.img} alt={scene.label} onError={(event) => { if (window.location.hostname === "localhost" && event.currentTarget.src !== `https://ankursaini.lovable.app${scene.img}`) event.currentTarget.src = `https://ankursaini.lovable.app${scene.img}`; }} /></Button>)}
+            {scenes.map((scene, index) => <Button key={scene.label} variant="ghost" aria-label={`Show ${scene.label}`} aria-pressed={active === index} onClick={() => showScene(index)} className={`hero-scene ${active === index ? "is-active" : ""}`}><img src={scene.img} alt={scene.label} onError={(event) => { if (window.location.hostname === "localhost" && event.currentTarget.src !== `https://ankursaini.lovable.app${scene.img}`) event.currentTarget.src = `https://ankursaini.lovable.app${scene.img}`; }} /></Button>)}
           </div>
         </div>
       </div>
