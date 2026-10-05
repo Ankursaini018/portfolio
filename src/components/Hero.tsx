@@ -7,6 +7,7 @@ import portraitGreen from "@/assets/hero-portrait-green.png.asset.json";
 import portraitNavy from "@/assets/hero-portrait-navy.png.asset.json";
 import portraitBrown from "@/assets/hero-portrait-brown.png.asset.json";
 import { Button } from "./ui/button";
+import { scrollPortfolioTo } from "@/lib/portfolioScroll";
 
 const Hero = () => {
   const sceneRef = useRef<HTMLElement>(null);
@@ -64,7 +65,7 @@ const Hero = () => {
       <div className="hero-content">
         <div className="hero-intro">
           <span className="hero-kicker">Independent AI / ML engineer</span>
-          <p>BUILDING IDEAS<br />INTO INTELLIGENCE.</p>
+          <p><span className="hero-line-mask"><span className="hero-line">BUILDING IDEAS</span></span><span className="hero-line-mask"><span className="hero-line">INTO INTELLIGENCE.</span></span></p>
         </div>
         <div className="hero-discipline" aria-label="Expertise">
           <span>Machine Learning <ArrowDownRight /></span>
@@ -77,9 +78,9 @@ const Hero = () => {
       </div>
       <div className="hero-bottom">
         <div className="hero-meta"><span className="hero-status-dot" /> PILANI, INDIA <span className="hero-meta-divider">—</span> OPEN TO WORK</div>
-        <h1>ANKUR <span>SAINI</span></h1>
+        <h1><span className="hero-name-mask"><span className="hero-name-word">ANKUR</span></span>{" "}<span className="hero-name-mask"><span className="hero-name-word">SAINI</span></span></h1>
         <div className="hero-bottom-row">
-          <Button variant="ghost" onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })} className="hero-scroll">SCROLL TO EXPLORE <ArrowDownRight /></Button>
+          <Button variant="ghost" onClick={() => scrollPortfolioTo("#about")} className="hero-scroll">SCROLL TO EXPLORE <ArrowDownRight /></Button>
           <div className="hero-scenes" aria-label="Choose visual scene" onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false); }}>
             {scenes.map((scene, index) => <Button key={scene.label} variant="ghost" aria-label={`Show ${scene.label}`} aria-pressed={active === index} onClick={() => showScene(index)} className={`hero-scene ${active === index ? "is-active" : ""}`}><img src={scene.img} alt={scene.label} onError={(event) => { if (window.location.hostname === "localhost" && event.currentTarget.src !== `https://ankursaini.lovable.app${scene.img}`) event.currentTarget.src = `https://ankursaini.lovable.app${scene.img}`; }} /></Button>)}
           </div>
