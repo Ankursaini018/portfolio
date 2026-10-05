@@ -586,6 +586,11 @@
 .portfolio-back-top.is-visible:hover { transform: translateY(-3px) scale(1); }
 .project-cursor { position: fixed; z-index: 85; top: 0; left: 0; display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); font-size: 11px; font-weight: 700; opacity: 0; pointer-events: none; transform: translate(-50%, -50%) scale(.65); transition: opacity .25s ease, scale .35s ease; }
 .project-cursor.is-visible { opacity: 1; scale: 1; }
+@media (max-width: 359px) {
+  .nav-left { gap: 7px; padding-inline: 8px; }
+  .nav-divider { width: 12px; }
+  .nav-contact { min-width: 106px; }
+}
 .project-index { display: flex; flex-direction: column; gap: 20px; color: hsl(var(--muted-foreground)); font-size: 13px; font-weight: 700; }
 .project-index span:first-child { color: hsl(var(--primary)); }
 .project-category { margin-bottom: 22px; color: hsl(var(--primary)); font-size: 12px; font-weight: 700; }
