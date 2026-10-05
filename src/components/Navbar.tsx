@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowUpRight, Menu, Shield, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { useAuth } from "@/hooks/useAuth";
+import { scrollPortfolioTo } from "@/lib/portfolioScroll";
 
 const links = [
   { href: "#about", label: "About" },
@@ -30,12 +31,12 @@ const Navbar = () => {
   }, [open]);
   const jump = (href: string) => {
     setOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    scrollPortfolioTo(href);
   };
   return (
     <nav className={`diroz-nav ${scrolled ? "is-scrolled" : ""}`} aria-label="Main navigation">
       <div className="nav-left">
-        <a className="nav-brand" href="#top" onClick={(e) => { e.preventDefault(); setOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}>Ankur<span>®</span></a>
+        <a className="nav-brand" href="#top" onClick={(e) => { e.preventDefault(); setOpen(false); scrollPortfolioTo(0); }}>Ankur<span>®</span></a>
         <span className="nav-divider" />
         <Button variant="ghost" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={open ? "Close menu" : "Open menu"} className="nav-menu-button">{open ? <X /> : <Menu />} <span>{open ? "Close" : "Menu"}</span></Button>
       </div>
