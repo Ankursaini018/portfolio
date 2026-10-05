@@ -697,7 +697,7 @@
   .section-display { font-size: clamp(48px, 12vw, 70px); }
   .about-highlights { grid-template-columns: 1fr; }
   .about-details h2 { font-size: 32px; }
-  .project-content h3 { font-size: 46px; }
+  .project-content h3 { font-size: clamp(30px, 9vw, 46px); }
   .footer-top { flex-wrap: wrap; }
   .footer-top > span:nth-child(2) { display: none; }
   .diroz-footer h2 { font-size: 16vw; }

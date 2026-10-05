@@ -104,6 +104,7 @@ const PortfolioMotion = () => {
       const listeners: Array<() => void> = [];
       if (!reduced && fine && window.innerWidth >= 1024 && cursorRef.current) {
         const cursor = cursorRef.current;
+        gsap.set(cursor, { xPercent: -50, yPercent: -50 });
         const moveX = gsap.quickTo(cursor, "x", { duration: .28, ease: "power3.out" });
         const moveY = gsap.quickTo(cursor, "y", { duration: .28, ease: "power3.out" });
         for (const row of document.querySelectorAll<HTMLElement>(".project-row")) {
