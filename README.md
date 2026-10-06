@@ -60,7 +60,7 @@ I enjoy solving problems using **data, machine learning, and intelligent systems
 
 ## 💡 Featured Project
 
-### 🤖 AI Document Assistant (RAG System)
+### 🤖 RAG SYSTEM
 
 An AI-powered document question-answering system built using **Retrieval-Augmented Generation (RAG)**.
 
