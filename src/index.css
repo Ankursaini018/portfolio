@@ -595,6 +595,7 @@
 .project-index span:first-child { color: hsl(var(--primary)); }
 .project-category { margin-bottom: 22px; color: hsl(var(--primary)); font-size: 12px; font-weight: 700; }
 .project-content h3 { font-size: clamp(48px, 6.3vw, 102px); line-height: .97; font-weight: 700; }
+.project-content h3.is-long { font-size: clamp(30px, 3.7vw, 60px); line-height: 1.04; }
 .project-description { max-width: 690px; margin-top: 30px; color: hsl(var(--muted-foreground)); font-size: 18px; line-height: 1.55; }
 .project-tags { margin-top: 30px; }
 .project-links { display: flex; gap: 30px; margin-top: 36px; }
