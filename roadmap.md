@@ -3,3 +3,8 @@
 - [x] Add all three LinkedIn experience entries with accurate dates and responsibilities.
 - [x] Replace Crop Recommendation with one verified GitHub project.
 - [x] Verify the updated sections and project link in the preview.
+
+# Project renaming
+- [x] Rename "AI Document Assistant" to "RAG SYSTEM".
+- [x] Rename "DeepAnomaly" to "SELF-SUPERVISED ANOMALY DETECTION / TIME SERIES".
+- [x] Keep the long title balanced with the other cards and verify at every screen size.
