@@ -1,8 +1,8 @@
 const categories = [
-  { title: "Programming", items: ["Python", "SQL", "C++", "Flask"] },
-  { title: "Data Science", items: ["NumPy", "Pandas", "Matplotlib", "Seaborn"] },
-  { title: "Machine Learning", items: ["Scikit-learn", "Deep Learning", "Neural Networks", "Model Training"] },
-  { title: "Soft Skills", items: ["Problem-Solving", "Team Collaboration", "Data Visualization", "Communication"] },
+  { title: "Generative AI", items: ["LangChain", "Large Language Models (LLM)", "Vibe Coding"] },
+  { title: "Data Science", items: ["Pandas", "EDA", "Feature Engineering", "Matplotlib", "Seaborn", "Power BI / Tableau"] },
+  { title: "Machine Learning", items: ["Scikit-learn", "Model Development", "Model Evaluation", "Optimization & Validation", "Computer Vision"] },
+  { title: "Engineering", items: ["Python", "Flask", "Full-stack Development", "Data Structures", "System Design", "Team Collaboration"] },
 ];
 const Skills = () => <section id="skills" className="diroz-section diroz-skills"><div className="diroz-shell">
   <div className="section-heading"><span className="section-index">/ 02 — EXPERTISE</span><span>THE TOOLKIT</span></div>

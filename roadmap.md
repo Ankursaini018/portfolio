@@ -1,4 +1,5 @@
-# Motion upgrade
-- [x] Add smooth scrolling and coordinated hero/section reveals without changing content or layout.
-- [x] Refine motion-only interactions, progress indicator, and back-to-top behavior.
-- [x] Verify desktop, mobile, reduced-motion, and existing controls.
+# LinkedIn portfolio update
+- [x] Update Who I Am and Skills from Profile.pdf without changing the design.
+- [x] Add all three LinkedIn experience entries with accurate dates and responsibilities.
+- [x] Replace Crop Recommendation with one verified GitHub project.
+- [x] Verify the updated sections and project link in the preview.
