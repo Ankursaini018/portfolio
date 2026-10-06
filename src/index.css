@@ -704,6 +704,7 @@
   .about-highlights { grid-template-columns: 1fr; }
   .about-details h2 { font-size: 32px; }
   .project-content h3 { font-size: clamp(30px, 9vw, 46px); }
+  .project-content h3.is-long { font-size: clamp(23px, 6.4vw, 34px); }
   .footer-top { flex-wrap: wrap; }
   .footer-top > span:nth-child(2) { display: none; }
   .diroz-footer h2 { font-size: 16vw; }
