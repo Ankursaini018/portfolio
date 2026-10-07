@@ -630,7 +630,9 @@
 .footer-email svg { flex: none; }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 22px; border-top: 1px solid hsl(var(--border)); color: hsl(var(--muted-foreground)); font-size: 11px; font-weight: 600; }
 .footer-bottom button { color: hsl(var(--foreground)); font-size: 11px; }
-.footer-admin { color: hsl(var(--muted-foreground) / .55); font-size: 15px; }
+.footer-admin { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; color: hsl(var(--muted-foreground) / .55); transition: color .3s ease, background-color .3s ease; }
+.footer-admin svg { width: 15px; height: 15px; }
+.footer-admin:hover { color: hsl(var(--foreground)); background-color: hsl(var(--foreground) / .08); }
 @media (max-width: 991px) {
   .diroz-hero { height: min(780px, 86svh); min-height: 630px; }
   .hero-portrait-layer { height: 95%; bottom: -11%; }
