@@ -684,8 +684,9 @@
   .skill-row { grid-template-columns: 38px 1fr; gap: 15px; min-height: 130px; }
   .skill-tags { grid-column: 2; }
   .experience-grid { gap: 25px; }
-  .experience-meta > span { font-size: 80px; }
-  .project-row { grid-template-columns: 1fr; gap: 20px; padding-block: 45px 55px; }
+  .experience-meta > span { font-size: 64px; }
+  .projects-list { grid-template-columns: 1fr; }
+  .project-row { padding: 30px 5vw 38px; gap: 20px; }
   .project-index { flex-direction: row; justify-content: space-between; }
   .project-description { font-size: 16px; }
   .contact-lede { margin-top: -30px; margin-bottom: 60px; }
