@@ -553,11 +553,7 @@
 .skill-row h3 { font-size: clamp(26px, 3.2vw, 50px); font-weight: 600; }
 .skill-tags, .project-tags { display: flex; flex-wrap: wrap; gap: 7px; }
 .skill-tags span, .project-tags span { border: 1px solid hsl(var(--border)); border-radius: 100px; padding: 9px 14px; color: hsl(var(--muted-foreground)); font-size: 12px; }
-.diroz-experience { background: hsl(var(--background)); }
-.experience-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 8vw; padding-block: 45px; border-top: 1px solid hsl(var(--border)); }
-.experience-meta > span { display: block; font-size: clamp(70px, 10vw, 150px); font-weight: 800; line-height: 1; color: hsl(var(--foreground) / .18); }
-.experience-meta p { margin-top: 12px; color: hsl(var(--muted-foreground)); font-size: 13px; font-weight: 600; }
-.experience-body h3 { margin-top: 30px; font-size: clamp(42px, 5.5vw, 83px); line-height: 1.02; font-weight: 700; }
+.diroz-projects { background: hsl(var(--secondary)); }
 .experience-body h3 span { color: hsl(var(--primary)); }
 .experience-company { margin-block: 27px 38px; font-size: 13px; font-weight: 700; }
 .experience-body ul { max-width: 680px; }
