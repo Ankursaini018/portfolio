@@ -553,15 +553,21 @@
 .skill-row h3 { font-size: clamp(26px, 3.2vw, 50px); font-weight: 600; }
 .skill-tags, .project-tags { display: flex; flex-wrap: wrap; gap: 7px; }
 .skill-tags span, .project-tags span { border: 1px solid hsl(var(--border)); border-radius: 100px; padding: 9px 14px; color: hsl(var(--muted-foreground)); font-size: 12px; }
-.diroz-projects { background: hsl(var(--secondary)); }
+.diroz-experience { background: hsl(var(--background)); }
+.experience-cards { display: grid; gap: 26px; }
+.experience-grid { display: grid; grid-template-columns: .55fr 1.45fr; gap: 5vw; padding: 44px 3.4vw 52px; border: 1px solid hsl(var(--border)); border-radius: 24px; background: hsl(var(--card) / .5); transition: transform .5s cubic-bezier(.16,1,.3,1), border-color .4s ease, background .4s ease; }
+.experience-grid:hover { transform: translateY(-6px); border-color: hsl(var(--foreground) / .28); background: hsl(var(--card) / .8); }
+.experience-meta > span { display: block; font-size: clamp(56px, 7vw, 104px); font-weight: 800; line-height: 1; color: hsl(var(--foreground) / .18); }
+.experience-meta p { margin-top: 12px; color: hsl(var(--muted-foreground)); font-size: 13px; font-weight: 600; }
+.experience-body h3 { margin-top: 26px; font-size: clamp(32px, 4.2vw, 62px); line-height: 1.04; font-weight: 700; }
 .experience-body h3 span { color: hsl(var(--primary)); }
 .experience-company { margin-block: 27px 38px; font-size: 13px; font-weight: 700; }
 .experience-body ul { max-width: 680px; }
 .experience-body li { padding: 17px 0; border-top: 1px solid hsl(var(--border)); color: hsl(var(--muted-foreground)); font-size: 17px; }
 .diroz-projects { background: hsl(var(--secondary)); }
 .diroz-projects .section-display span { color: hsl(var(--primary)); }
-.projects-list { border-top: 1px solid hsl(var(--border)); }
-.project-row { display: grid; grid-template-columns: .27fr 1fr; gap: 5vw; padding-block: 62px 78px; border-bottom: 1px solid hsl(var(--border)); }
+.projects-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; }
+.project-row { display: flex; flex-direction: column; gap: 26px; padding: 40px 2.6vw 46px; border: 1px solid hsl(var(--border)); border-radius: 24px; background: hsl(var(--background) / .55); transition: transform .5s cubic-bezier(.16,1,.3,1), border-color .4s ease, background .4s ease; }
 .project-row .project-content h3, .project-row .project-links svg { transition: transform .5s cubic-bezier(.16,1,.3,1); }
 .skill-tags span { transition: transform .4s ease, border-color .4s ease, color .4s ease; }
 .footer-email svg, .nav-contact svg, .footer-bottom button, .hero-scroll svg, .project-links svg { transition: transform .35s cubic-bezier(.16,1,.3,1); }
