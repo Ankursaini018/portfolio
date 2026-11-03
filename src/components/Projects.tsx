@@ -6,8 +6,8 @@ const projects = [
   { number: "04", year: "2026", title: "RL DYNAMIC PRICING", subtitle: "REINFORCEMENT LEARNING / PRICING", description: "A reinforcement learning system that trains an AI agent to learn optimal dynamic pricing for travel and hospitality across simulated booking seasons — no labeled data. Q-Learning, DQN and PPO agents are benchmarked over 1,000 seasons, with PPO discovering deadline discounting and scarcity-premium strategies, validated by statistical tests.", tags: ["Reinforcement Learning", "Python", "PyTorch", "DQN", "PPO", "React"], github: "https://github.com/Ankursaini018/RL-Dynamic-Pricing.git" },
 ];
 const Projects = () => <section id="projects" className="diroz-section diroz-projects"><div className="diroz-shell">
-  <div className="section-heading"><span className="section-index">/ 04 — SELECTED WORK</span><span>2025 — 2026</span></div>
-  <h2 className="section-display">THE WORK<span>.</span></h2>
+  <div className="section-heading"><span className="section-index">/ 04 — SELECTED PROJECTS</span><span>2025 — 2026</span></div>
+  <h2 className="section-display">PROJECTS<span>.</span></h2>
   <div className="projects-list">{projects.map(project => <article className="project-row" key={project.number}><div className="project-index"><span>{project.number} / 04</span><span>{project.year}</span></div><div className="project-content"><p className="project-category">{project.subtitle}</p><h3 className={project.title.length > 20 ? "is-long" : undefined}>{project.title}</h3><p className="project-description">{project.description}</p><div className="project-tags">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div><div className="project-links">{project.demo && <a href={project.demo} target="_blank" rel="noopener noreferrer"><ExternalLink /> LIVE DEMO</a>}<a href={project.github} target="_blank" rel="noopener noreferrer"><Github /> GITHUB</a></div></div></article>)}</div>
 </div></section>;
 export default Projects;
